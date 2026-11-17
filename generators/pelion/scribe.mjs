@@ -45,37 +45,56 @@ const HEAD_DOWN = {
   13: [[13, ';;;;;;']],
   14: [[12, 'b::::;b']],
 };
-// the himation's top edge across the chest, from under the right arm (screen left) up to the left shoulder
-const edgeDown = x => 19 - Math.round((x - 10) * 4 / 11);
-function torsoDown() {
-  const r = {};
-  const put = (y, x, c) => (r[y] ??= []).push([x, c]);
-  // shoulders and arms: his right arm bare (screen left), the left under the himation
-  for (let y = 15; y <= 27; y++) for (let x = 10; x <= 21; x++) {
-    const e = edgeDown(x), hem = e + 5;
-    let c;
-    if (y < e) c = x < 13 && y > 16 ? 'B' : 'b'; // the chiton's upper chest
-    else if (y <= e + 1) c = 'y'; // the band
-    else if (y === e + 2) c = 'k'; // its lower seam: the band reads on any cloth
-    else if (y < hem) c = x > 18 ? 'd' : x < 12 ? 'R' : 'r';
-    else if (y === hem) c = 't';
-    else if (y === hem + 1) c = 'T';
-    else c = (x === 12 || x === 15 || x === 18) && y > hem + 2 ? 'B' : 'b'; // the chiton's skirt, its pleats
-    put(y, x, c);
+// The himation, front and back: its top edge (the rolled band) rises from under the right arm to the left shoulder;
+// below it the cloth sags in swag folds across the chest and falls straight over the left side; its hem runs long on
+// the left (to the knee) and short on the right (the chiton's skirt shows there). One border (t) along the hem.
+// lx: the x mirrored so that 0 is under the right arm and 11 at the left shoulder (front: x - 10, back: 21 - x).
+const edgeAt = lx => 20 - Math.round(lx * 5 / 11);
+const hemAt = lx => 23 + Math.round(lx * 4 / 11);
+// rows of the body: [first x, last x] per y (the waist pinched on the bare side)
+function cloth(y, x, lx, back) {
+  const e = edgeAt(lx), hem = hemAt(lx);
+  if (y < e) return (back ? lx <= 1 && y > 17 : lx <= 1 && y > 17) ? 'B' : y === e - 1 && lx > 2 ? 'B' : 'b'; // the chiton's shoulder
+  if (y <= e + 1) return 'y'; // the band
+  if (y === e + 2) return 'k'; // its seam: the band reads on any cloth
+  if (y < hem) {
+    if (lx >= 9) return lx === 11 ? 'd' : lx === 10 ? (back ? 'R' : 'd') : (back ? 'r' : 'R'); // falling straight from the shoulder
+    const k = y - e - 2; // the swag folds sag under the band
+    if (k === 2 || k === 5) return 'd';
+    if (k === 1 || k === 4) return lx < 3 ? 'r' : 'R';
+    return 'r';
   }
-  // the left shoulder under the himation
-  put(15, 19, 'RRRrr'); put(16, 20, 'rrrd');
-  for (let y = 17; y <= 21; y++) put(y, 23, y === 21 ? 'ttT' : 'rrd');
-  put(17, 22, 'k'); put(18, 22, 'k'); put(19, 22, 'k'); put(20, 22, 'k'); put(21, 22, 'k');
-  for (let y = 22; y <= 24; y++) put(y, 23, '::;');
-  put(25, 23, ':;;');
-  for (let y = 22; y <= 25; y++) put(y, 22, 'k');
-  // his right arm: the chiton's short sleeve, then bare
-  put(15, 7, 'bbb'); put(16, 6, 'bbbb');
-  for (let y = 17; y <= 24; y++) { put(y, 6, y === 17 ? 'BBB' : '::;'); put(y, 9, 'k'); }
-  put(25, 6, ':;;'); put(25, 9, 'k');
-  // the skirt widens to the knee
-  put(26, 9, 'b'); put(27, 9, 'b'); put(26, 22, 'B'); put(27, 22, 'B');
+  if (y === hem) return 't'; // the border
+  return lx === 2 || lx === 5 ? 'B' : 'b'; // the chiton's skirt, its pleats
+}
+function bodyRows(back) {
+  const r = {}, put = (y, x, c) => (r[y] ??= []).push([x, c]);
+  for (let y = 15; y <= 27; y++) {
+    const pinch = y === 21 || y === 22, flare = y >= 26;
+    for (let x = 9; x <= 22; x++) {
+      const lx = back ? 21 - x : x - 10;
+      if (lx < -1 || lx > 12) continue;
+      const bare = lx <= 0, hem = hemAt(Math.max(0, Math.min(11, lx)));
+      if ((lx === -1 || lx === 12) && !(flare && y > hem)) continue; // the skirt flares past the body below the hem
+      if (pinch && lx === 0) continue; // the waist, on the bare side
+      put(y, x, cloth(y, x, Math.max(0, Math.min(11, lx)), back));
+      void bare;
+    }
+  }
+  return [r, put];
+}
+function torsoDown() {
+  const [r, put] = bodyRows(false);
+  // the left shoulder and arm under the himation (screen right), its hem bordered, the hand below
+  put(15, 19, 'RRRrr'); put(16, 20, 'RRrd');
+  for (let y = 17; y <= 22; y++) { put(y, 22, 'k'); put(y, 23, 'Rrd'); }
+  put(23, 22, 'k'); put(23, 23, 'ttt');
+  put(24, 22, 'k'); put(24, 23, '::;'); put(25, 23, ':;;');
+  // his right arm (screen left): the chiton's short sleeve, then bare, hanging
+  put(15, 7, 'bbb'); put(16, 6, 'bbbb'); put(17, 6, 'BBB');
+  for (let y = 18; y <= 24; y++) put(y, 6, '::;');
+  put(25, 6, ':;;');
+  for (let y = 17; y <= 25; y++) put(y, 9, 'k');
   return r;
 }
 const LEGS_DOWN = {
@@ -111,29 +130,18 @@ const HEAD_UP = {
   13: [[13, '::::;;']],
   14: [[12, 'b::::;b']],
 };
-// on the back the himation runs from the left shoulder (screen left) down to under the right arm
-const edgeUp = x => edgeDown(31 - x);
+// on the back the himation runs from the left shoulder (screen left) down to under the right arm (screen right)
 function torsoUp() {
-  const r = {}, put = (y, x, c) => (r[y] ??= []).push([x, c]);
-  for (let y = 15; y <= 27; y++) for (let x = 10; x <= 21; x++) {
-    const e = edgeUp(x), hem = e + 5;
-    let c;
-    if (y < e) c = x > 18 && y > 16 ? 'B' : 'b';
-    else if (y <= e + 1) c = 'y';
-    else if (y === e + 2) c = 'k';
-    else if (y < hem) c = x < 13 ? 'R' : x > 19 ? 'd' : 'r';
-    else if (y === hem) c = 't';
-    else if (y === hem + 1) c = 'T';
-    else c = (x === 13 || x === 16 || x === 19) && y > hem + 2 ? 'B' : 'b';
-    put(y, x, c);
-  }
-  put(15, 8, 'RRrrr'); put(16, 8, 'Rrrr');
-  // his left arm (screen left) under the himation, to the elbow; the forearm forward, hidden by the body
-  for (let y = 17; y <= 20; y++) { put(y, 6, y === 20 ? 'Ttt' : 'Rrr'); put(y, 9, 'k'); }
+  const [r, put] = bodyRows(true);
+  put(15, 8, 'RRrrr'); put(16, 8, 'RRrr');
+  // his left arm (screen left) under the himation, to the elbow: the forearm is forward, hidden by the body
+  for (let y = 17; y <= 20; y++) { put(y, 6, 'Rrd'); put(y, 9, 'k'); }
+  put(21, 7, 'tt'); put(21, 9, 'k');
   // his right arm (screen right) bare, to the elbow
-  put(15, 22, 'bbb'); put(16, 22, 'bbbb');
-  for (let y = 17; y <= 20; y++) { put(y, 23, y === 17 ? 'BBB' : '::;'); put(y, 22, 'k'); }
-  put(26, 9, 'b'); put(27, 9, 'b'); put(26, 22, 'B'); put(27, 22, 'B');
+  put(15, 22, 'bbb'); put(16, 22, 'bbbb'); put(17, 23, 'BBB');
+  for (let y = 18; y <= 20; y++) put(y, 23, '::;');
+  put(21, 23, ':;');
+  for (let y = 17; y <= 21; y++) put(y, 22, 'k');
   return r;
 }
 
@@ -154,27 +162,34 @@ const HEAD_RIGHT = {
   13: [[13, ';;;;;']],
   14: [[12, 'bb:::b']],
 };
-const edgeRight = x => 17 + Math.round((x - 10) * 4 / 11);
-function torsoRight() {
+// the side: the himation hangs down his back from the far shoulder, passes under the near arm and crosses the front
+const edgeRight = x => (x >= 14 && x <= 18 ? 19 : 18); // round the body at the armpit, sagging under the arm
+function torsoRight(step) {
   const r = {}, put = (y, x, c) => (r[y] ??= []).push([x, c]);
   for (let y = 15; y <= 27; y++) for (let x = 10; x <= 21; x++) {
-    const e = edgeRight(x), hem = 23 + Math.round((x - 10) / 5);
+    if ((y === 21 || y === 22) && x === 21) continue; // the waist
+    if (x === 10 && y < 17) continue;
+    const e = edgeRight(x), hem = 25 + Math.round((21 - x) / 5); // longer at the back
     let c;
-    if (y < e) c = x <= 11 ? 'd' : 'b'; // the chiton's shoulder; the himation falls down his back from the far shoulder
+    if (y < e) c = x <= 12 ? (x === 12 ? 'r' : 'd') : y === e - 1 && x > 17 ? 'B' : 'b';
     else if (y <= e + 1) c = 'y';
     else if (y === e + 2) c = 'k';
-    else if (y < hem) c = x < 12 ? 'd' : x > 19 ? 'R' : 'r';
+    else if (y < hem) c = x <= 11 ? 'd' : x === 12 ? 'R' : (y - e) % 3 === 0 ? 'd' : x >= 19 ? 'R' : 'r';
     else if (y === hem) c = 't';
-    else if (y === hem + 1) c = 'T';
-    else c = x === 12 || x === 19 ? 'B' : 'b';
+    else c = x === 13 || x === 18 ? 'B' : 'b';
     put(y, x, c);
   }
-  put(26, 9, 'B'); put(27, 9, 'B'); put(26, 22, 'b'); put(27, 22, 'b');
-  // his right arm, near side, bare below the sleeve, hanging in front of the body
-  put(15, 15, 'bbb'); put(16, 15, 'bbb');
-  for (let y = 17; y <= 24; y++) { put(y, 14, 'k'); put(y, 15, '::;'); put(y, 18, 'k'); }
-  put(17, 15, 'BBB');
-  put(25, 15, ':;;'); put(25, 14, 'k'); put(25, 18, 'k');
+  put(26, 9, 'd'); put(27, 9, 'd'); put(26, 22, 'b'); put(27, 22, 'b');
+  // the near arm hanging naturally: the short sleeve, the upper arm, a slight bend at the elbow, the hand at the hip;
+  // the forearm swings a pixel with the stride
+  const sw = [0, 1, -1][step];
+  put(15, 14, 'bbbb'); put(16, 13, 'kbbbb'); put(17, 13, 'kBBBk');
+  for (let y = 18; y <= 20; y++) put(y, 13, 'k::;k'); // the upper arm, lit and shadow
+  put(21, 13, 'k:::;k'); // the elbow, bending slightly forward
+  put(22, 14 + sw, 'k::;k'); // the forearm, swinging with the stride
+  put(23, 14 + sw, 'k::;k');
+  put(24, 14 + sw, 'k:;;k'); // the hand at the hip
+  put(25, 15 + sw, 'kkk');
   return r;
 }
 function legsRight(step) {
@@ -191,41 +206,48 @@ function legsRight(step) {
   return r;
 }
 
-// ---- the arm at the desk: a bare forearm rising from the elbow, the hand with a bronze stylus ----
-// drawn over the back view (up 0) at the arm anchor, mirrored at armL
+// ---- the forearm at rest, drawn over the back view whenever the student is not walking (at the table, in the
+// queue, at the mechanism), mirrored for the left: bent forward from the elbow, the hand toward the belt in front of
+// him. Seated it reads as the hands at the table, standing as the hands folded. No stylus: from behind the hand is
+// half hidden and a mirrored stylus in the left hand would make no sense. Lifted with the finished scroll (liftOf),
+// the forearms rise to the chest.
 const ARM = [
-  '.h......',
-  '.h......',
-  'kh:k....',
-  'k:::k...',
-  'k:::;k..',
-  '.k::;k..',
-  '.k::;k..',
-  '..k:;;k.',
-  '..k::;k.',
-  '..k::;k.',
-  '...k:;k.',
-  '...k::;k',
-  '...k::;k',
-  '...k::;k',
-  '....k;;k',
-  '.....kk.',
+  '........',
+  '........',
+  '........',
+  '........',
+  '........',
+  '........',
+  '........',
+  '........',
+  '....:;..',
+  '....::;.',
+  '.....:;;',
+  '.....::;',
+  '......;.',
+  '........',
+  '........',
+  '........',
 ];
-
+function outlineArm(a) {
+  const g = a.map(r => [...r]), out = g.map(r => [...r]);
+  for (let y = 0; y < 16; y++) for (let x = 0; x < 8; x++) if (g[y][x] === '.' && [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => (g[y + dy]?.[x + dx] ?? '.') !== '.')) out[y][x] = 'k';
+  return out;
+}
 const frames = {};
 const build = (head, torso, legs) => rows(outline(frame(merge(head, torso, legs))));
 for (const s of [0, 1, 2]) {
   frames[`down ${s}`] = build(HEAD_DOWN, torsoDown(), legsDown(s));
   frames[`up ${s}`] = build(HEAD_UP, torsoUp(), legsDown(s));
-  frames[`right ${s}`] = build(HEAD_RIGHT, torsoRight(), legsRight(s));
+  frames[`right ${s}`] = build(HEAD_RIGHT, torsoRight(s), legsRight(s));
 }
-frames.arm = ARM;
+frames.arm = rows(outlineArm(ARM));
 for (const [n, f] of Object.entries(frames)) {
   const w = n === 'arm' ? 8 : W, h = n === 'arm' ? 16 : H;
   if (f.length !== h || f.some(r => r.length !== w)) throw new Error(`${n}: not ${w}x${h}`);
 }
 // arm: the forearm's elbow over the back view's right upper arm, armL its mirror over the left
-const anchors = { feet: [16, 34], arm: [21, 2], armL: [3, 2], scroll: [26, 14] };
+const anchors = { feet: [16, 34], arm: [18, 10], armL: [6, 10], scroll: [26, 14] };
 const layout = [['down 0', 'down 1', 'down 2', 'up 0', 'up 1', 'up 2', 'right 0', 'right 1', 'right 2'], ['arm']];
 console.log(writeSheet('pelion/scribe', frames, layout, { app: 'adm-themes generators/pelion/scribe.mjs', anchors }));
 if (process.argv.includes('--print')) for (const [n, f] of Object.entries(frames)) console.log(n + '\n' + f.join('\n'));

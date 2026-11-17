@@ -1,6 +1,6 @@
 // Pelion's helpers (the adept family): a boy of the school, smaller than the students, bare-headed with short curls,
 // a short tunic to mid-thigh with a trimmed hem and neckline, a leather satchel on a strap across the body, a papyrus
-// roll in his right hand, sandals. The subagent's kind glyph is the satchel's flap, worn on the left hip: seen from the
+// roll held against his chest, sandals. The subagent's kind glyph is the satchel's flap, worn on the left hip: seen from the
 // front and from the back (the glyph down / glyph up anchors); the side view shows the strap and no glyph.
 // Run from the Administratum root: node <this file>. Writes ui/art/pelion/adept.png + .json.
 //
@@ -41,23 +41,33 @@ const HEAD_DOWN = {
   11: [[9, '::::;;']],
   12: [[10, ';;;;']],
 };
+// the tunic's body, shared by front and back: shoulders, a straight torso to the trimmed hem
+function tunic(put, back) {
+  put(13, 6, back ? 'bqqqqqqqqqQQ' : 'bqqqJIIJqqQQ'); // the neckline's trim in front
+  for (let y = 14; y <= 20; y++) for (let x = 8; x <= 15; x++) put(y, x, x === 8 ? 'b' : x >= 14 ? 'Q' : 'q');
+  put(20, 7, 'b'); put(20, 16, 'Q');
+  put(21, 7, 'JJIJJIJJIJ'); // the hem's trim
+}
+// an arm hanging along the body: sleeve, upper arm, forearm, the hand at the thigh; x its outer column
+function hanging(put, x, sep) {
+  put(14, x, 'bq');
+  for (let y = 15; y <= 19; y++) put(y, x, ':;');
+  put(20, x, '::');
+  for (let y = 14; y <= 20; y++) put(y, sep, 'k');
+}
 function bodyDown() {
   const [r, put] = sheet();
-  put(13, 5, 'bqqqJIIJqqqQ'); put(13, 17, 'QQ'); // shoulders, the trimmed neckline
-  put(14, 4, 'bqq'); put(14, 17, 'qQQ');
-  for (let y = 14; y <= 20; y++) for (let x = 8; x <= 15; x++) put(y, x, x === 8 ? 'b' : x >= 14 ? 'Q' : 'q');
-  for (let y = 15; y <= 19; y++) { put(y, 4, '::;'); put(y, 7, 'k'); put(y, 16, 'k'); put(y, 17, '::;'); }
-  put(19, 7, 'b'); put(20, 7, 'bq'); put(19, 16, 'Q'); put(20, 15, 'QQ');
-  put(21, 7, 'JJIJJIJJIJ'); // the hem's trim
+  tunic(put, false);
   // the strap from the right shoulder (screen left) down to the left hip
-  [[13, 9], [14, 9], [15, 10], [16, 11], [17, 12], [18, 13]].forEach(([y, x]) => put(y, x, 'WL'.slice(0, y < 15 ? 1 : 2)));
+  [[13, 9], [14, 9], [15, 10], [16, 11], [17, 12]].forEach(([y, x]) => put(y, x, y < 15 ? 'W' : 'WL'));
   // the satchel on the left hip, its flap (the glyph) on top
-  put(17, 13, 'WWWWW'); put(18, 13, 'WWWWW'); put(19, 13, 'WWWWW');
-  put(17, 12, 'L'); put(18, 12, 'L'); put(19, 12, 'L'); put(17, 18, 'L'); put(18, 18, 'L'); put(19, 18, 'L');
-  put(20, 12, 'LLLLLLL'); put(21, 13, 'WWWWW');
-  // the papyrus roll in his right hand
-  for (let y = 15; y <= 23; y++) put(y, 1, y === 15 || y === 23 ? 'PP' : 'pP');
-  put(19, 3, '::;'); put(20, 3, ':;;');
+  put(18, 13, 'LWWWWWL'); put(19, 13, 'LWWWWWL'); put(20, 13, 'LWWWWWL'); put(21, 14, 'LLLLL');
+  hanging(put, 5, 7); // his right arm, down
+  // his left arm bent at the elbow, the hand holding a papyrus roll across his chest
+  put(14, 17, 'qQ'); put(15, 17, ':;'); put(16, 17, ':;'); put(17, 16, 'k:;');
+  put(14, 16, 'k'); put(15, 16, ';');
+  put(15, 9, 'PppppP'); put(16, 9, 'PPPPPP'); put(17, 9, 'kkkkkkk'); put(15, 8, 'k'); put(16, 8, 'k'); // the roll
+  put(15, 15, '::'); put(16, 15, ':;'); // the hand round its end
   return r;
 }
 function legs(step, xs = [9, 13]) {
@@ -88,20 +98,11 @@ const HEAD_UP = {
 };
 function bodyUp() {
   const [r, put] = sheet();
-  put(13, 5, 'bqqqJIIJqqqQ'); put(13, 17, 'QQ');
-  put(14, 4, 'bqq'); put(14, 17, 'qQQ');
-  for (let y = 14; y <= 20; y++) for (let x = 8; x <= 15; x++) put(y, x, x === 8 ? 'b' : x >= 14 ? 'Q' : 'q');
-  for (let y = 15; y <= 19; y++) { put(y, 4, '::;'); put(y, 7, 'k'); put(y, 16, 'k'); put(y, 17, '::;'); }
-  put(19, 7, 'b'); put(20, 7, 'bq'); put(19, 16, 'Q'); put(20, 15, 'QQ');
-  put(21, 7, 'JJIJJIJJIJ');
+  tunic(put, true);
   // the strap from the right shoulder (screen right) down the back to the left hip (screen left)
-  [[13, 14], [14, 14], [15, 12], [16, 11], [17, 10], [18, 9]].forEach(([y, x]) => put(y, x, 'LW'.slice(y < 15 ? 1 : 0)));
-  put(17, 6, 'WWWWW'); put(18, 6, 'WWWWW'); put(19, 6, 'WWWWW');
-  put(17, 5, 'L'); put(18, 5, 'L'); put(19, 5, 'L'); put(17, 11, 'L'); put(18, 11, 'L'); put(19, 11, 'L');
-  put(20, 5, 'LLLLLLL'); put(21, 6, 'WWWWW');
-  // the roll in his right hand, screen right
-  for (let y = 15; y <= 23; y++) put(y, 21, y === 15 || y === 23 ? 'PP' : 'pP');
-  put(19, 18, '::;'); put(20, 18, ':;;');
+  [[13, 14], [14, 14], [15, 13], [16, 12], [17, 10]].forEach(([y, x]) => put(y, x, y < 15 ? 'W' : 'LW'));
+  hanging(put, 5, 7); hanging(put, 17, 16);
+  put(18, 4, 'LWWWWWL'); put(19, 4, 'LWWWWWL'); put(20, 4, 'LWWWWWL'); put(21, 5, 'LLLLL');
   return r;
 }
 
@@ -125,15 +126,15 @@ function bodyRight() {
   for (let y = 14; y <= 20; y++) for (let x = 8; x <= 15; x++) put(y, x, x <= 9 ? 'Q' : x === 15 ? 'b' : 'q');
   put(20, 7, 'Q'); put(20, 16, 'b');
   put(21, 7, 'JJIJJIJJIJ');
-  // the strap over the near shoulder, down and round his back; the satchel peeks out behind the left hip
-  [[13, 12], [14, 11], [15, 10], [16, 9], [17, 8]].forEach(([y, x]) => put(y, x, 'WL'));
-  put(17, 4, 'LWWW'); put(18, 4, 'LWWW'); put(19, 4, 'LLLL'); put(20, 5, 'WWW');
-  // the near arm, bare, holding the roll out in front
-  put(13, 12, 'bbq'); put(14, 12, 'qqq');
-  for (let y = 15; y <= 18; y++) { put(y, 11, 'k'); put(y, 12, '::;'); put(y, 15, 'k'); }
-  put(19, 11, 'k'); put(19, 12, ':::'); put(19, 15, 'k');
-  put(20, 13, 'PppppP'); put(21, 13, 'PPPPPP');
-  put(19, 13, '::;');
+  // the satchel, a soft bag on the hip under its strap, the strap over the near shoulder
+  [[13, 12], [14, 11], [15, 10], [16, 9]].forEach(([y, x]) => put(y, x, 'W'));
+  put(17, 7, 'WLLW'); put(18, 6, 'WLLLLW'); put(19, 6, 'WLLLLW'); put(20, 7, 'WWWW');
+  // the roll held across the chest by the far hand, its end out in front
+  put(15, 14, 'ppppP'); put(16, 14, 'PPPPP');
+  // the near arm hanging along the body
+  put(13, 11, 'bbq'); put(14, 11, 'kqq');
+  for (let y = 15; y <= 19; y++) { put(y, 11, 'k'); put(y, 12, ':;'); }
+  put(20, 11, 'k'); put(20, 12, '::');
   return r;
 }
 function legsRight(step) {
@@ -166,7 +167,7 @@ for (const [n, f] of Object.entries(frames)) {
   const [w, h] = n.startsWith('glyph') ? [10, 5] : [W, H];
   if (f.length !== h || f.some(r => r.length !== w)) throw new Error(`${n}: not ${w}x${h}`);
 }
-const anchors = { feet: [12, 28], 'glyph down': [13, 17], 'glyph up': [6, 17] };
+const anchors = { feet: [12, 28], 'glyph down': [14, 18], 'glyph up': [5, 18] };
 const layout = [['down 0', 'down 1', 'down 2', 'up 0', 'up 1', 'up 2', 'right 0', 'right 1', 'right 2'], ['glyph explore', 'glyph plan', 'glyph general', 'glyph custom']];
 console.log(writeSheet('pelion/adept', frames, layout, { app: 'adm-themes generators/pelion/adept.mjs', anchors }));
 if (process.argv.includes('--print')) for (const [n, f] of Object.entries(frames)) console.log(n + '\n' + f.join('\n'));
