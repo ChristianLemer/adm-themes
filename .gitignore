@@ -1,0 +1,3 @@
+
+# `meta` links to the project's notes folder (outside this repository). No trailing slash: a symlink is not a directory.
+meta
