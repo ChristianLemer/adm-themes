@@ -1,9 +1,11 @@
-// Pelion (the school of Chiron): the Laurels of the week cut on a marble stele. A low pediment (the tympanum painted blue, a
-// palmette at its apex, small ones at its corners) over a frieze where the title is cut, a moulding (lit, a red
-// painted band, dentils), the shaft widening a little toward its foot (lit on its left, its right in the grey-blue shade, faint veins) with four smooth
-// recessed fields for the words, a stepped plinth. The app's words are painted on the stone in a dark red (ui
-// --honours-ink). Signs carved and painted beside the fields: a laurel wreath (works sealed), a clay oil lamp (the
-// longest study), a running hare (aporiai resolved within the minute), a black-figure prize amphora (the busiest day).
+// Pelion (the school of Chiron): the Laurels of the week on a marble stele. A low pediment (the tympanum painted blue
+// with a palmette, small acroteria at its corners) over a frieze, a moulding (lit, a red painted band, dentils), the
+// shaft widening a little toward its foot (lit on its left, its right in the grey-blue shade, faint veins), a stepped
+// plinth. The title and the four marks are written in gilt (ui --honours-ink) on dark bronze tablets set into the
+// stone, as Greek cities set up their decrees on bronze: the night darkens the art but never the words, so no single
+// ink reads on bare marble both by day and by night. Signs painted on the stone beside the tablets: a laurel wreath
+// (works sealed), a clay oil lamp (the longest study), a running hare (aporiai resolved within the minute), a
+// black-figure prize amphora (the busiest day).
 import { W, H, TITLE, ICON, ROW, part, pic, plaque } from './kit.mjs';
 
 const P = 7; // the pediment's foot; its apex at row 1
@@ -26,6 +28,11 @@ const palm = (x, y) => {
   return null;
 };
 
+// A bronze tablet set into the stone (the words are written on it in gilt, ui --honours-ink): its rim dark on the top
+// and left where the stone overhangs it, lit on the bottom and right, its first row and column in shadow, the rest the
+// dark patinated bronze U.
+const tablet = (p, x, y, x0, y0) => (p === 'edge' ? (y === y0 || x === x0 ? 'k' : 'g') : y === y0 + 1 || x === x0 + 1 ? 'V' : 'U');
+
 const body = (x, y) => {
   const p = palm(x, y);
   if (p && !stone(x, y)) return p;
@@ -43,10 +50,10 @@ const body = (x, y) => {
   if (x === right - 1) return '9';
   if (y === P) return '4'; // the pediment's shadow on the frieze
   const t = part(TITLE, x, y);
-  if (t) return t === 'edge' ? (y === TITLE[1] || x === TITLE[0] ? '6' : 'X') : 's';
+  if (t) return tablet(t, x, y, TITLE[0], TITLE[1]);
   for (let i = 0; i < 4; i++) {
     const r = part(ROW(i), x, y), [rx, ry] = ROW(i);
-    if (r) return r === 'edge' ? (y === ry || x === rx ? '6' : 'X') : y === ry + 1 || x === rx + 1 ? '4' : 's';
+    if (r) return tablet(r, x, y, rx, ry);
   }
   if (y === 22) return '4'; // the moulding's shadow
   if (y === 88) return '9';
