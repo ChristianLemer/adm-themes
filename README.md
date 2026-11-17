@@ -7,7 +7,7 @@ Claude Code sessions. A pack is data only: colours, wording and sprite sheets. I
 
 | Folder | World | What it is |
 |---|---|---|
-| `pelion/` | Pelion | The school of Chiron on Mount Pelion: students in chiton and himation at marble tables, a stoa open on the Aegean. Work in progress: the students, the room, the tables, the wall furniture, Chiron and his place, the mechanism, the owl, the propylon and the fires are drawn; the small props, the side rooms and the 2.5D view still show the default art |
+| `pelion/` | Pelion | The school of Chiron on Mount Pelion: students in chiton and himation at marble tables, a stoa open on the Aegean. Work in progress: the students, the room, the tables, the wall furniture, Chiron and his place, the mechanism, the owl, the propylon, the fires, the scrolls, potsherds and the symposion are drawn; the honours stele, the side rooms, the lift, the night watchman and the 2.5D view still show the default art |
 | `breakingbad/` | Breaking Bad | The superlab under the laundry, drawn flat: one outline colour and flat fills, cooks in hazmat suits, the Br Ba tiles as the one decoration. Its own art for every family |
 
 ## Install
