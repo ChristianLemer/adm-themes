@@ -1,7 +1,7 @@
 // Pelion's tables (the workstations family): the student's marble table (a slab on two painted pedestals, a wax
 // diptych standing open at the back, a bronze stylus, a pebble abacus, a clay oil lamp), the reading stand (an olive-wood
-// table with a slanted board holding an open papyrus scroll, a lamp beside it), the helper's small round table (three
-// legs, a little wax tablet on a prop), and the shell's turn: a bronze armillary ring spinning on its pin, sixteen steps.
+// table with a slanted board holding an open papyrus scroll, a lamp beside it), the helper's small marble table (one
+// pedestal like the students', a little wax tablet on a prop), and the shell's turn: a bronze armillary ring spinning on its pin, sixteen steps.
 // Run from the Administratum root: node <this file>. Writes ui/art/pelion/workstations.png + .json.
 //
 // Slots: marble X (lit arris) s (face) 7 (veins) 4 9 6 (the grey-blue shades); olive wood L w W; bronze h g G U;
@@ -141,21 +141,25 @@ const frames = {};
   // a little wax tablet propped on the table
   leaf(g, 7, 0, 14, 10, [[1, 'cc.ccc.c..'], [3, 'ccc.cc....'], [5, 'c.cc......']]);
   put(g, 20, 4, ['k.', 'Wk', 'Wk', 'Wk', 'Wk', 'Wk']); // its prop
-  // the round top, three legs with bronze feet
-  put(g, 1, 9, [
-    '....kkkkkkkkkkkkkkkkk.....',
-    '..kkLLLLLLLLLLLLLLLLLkk...',
-    '..kLwwwwwwwwwwwwwwwwwwwk..',
-    'kLwwwwwwwwwwwwwwwwwwwwwwk.',
-    'kWwwwwwwwwwwwwwwwwwwwwwWk.',
-    '.kWWwwwwwwwwwwwwwwwwwWWk..',
-    '..kkkkkkkkkkkkkkkkkkkkk...',
+  // a small marble top with the painted bead band of the students' tables, on one pedestal of theirs (capital, blue band,
+  // shaft, moulded foot): the school's white marble, not wood
+  put(g, 3, 9, [
+    'kkkkkkkkkkkkkkkkkkkkkk',
+    'kXsss7ssssssss7sssss9k',
+    'k4u44x44u44x44u44x449k',
+    'kkkkkkkkkkkkkkkkkkkkkk',
   ]);
-  put(g, 3, 16, ['kLk', 'kwk', 'kgk', 'kkk']);
-  put(g, 21, 16, ['kwk', 'kWk', 'kGk', 'kkk']);
-  put(g, 12, 16, ['kLwk', 'kLwk', 'khgk', 'kkkk']);
+  put(g, 9, 13, [
+    'k6666666k',
+    'kuuuuuuuk',
+    '.kXs449k.',
+    '.kXs469k.',
+    'kkXs449kk',
+    'kXXs4499k',
+    'kkkkkkkkk',
+  ]);
   // a stylus on the top
-  put(g, 4, 11, ['.XhG', 'kG..']);
+  put(g, 3, 8, ['.XhG', 'kG..']);
   frames.CONSOLE = out(g);
 }
 
