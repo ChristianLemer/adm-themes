@@ -22,7 +22,8 @@ then *Install*, and restart the app. The world then appears in the *Theme* picke
 
 To make your own pack, see Administratum's guide, `docs/theme-packs.md`.
 
-`generators/` holds the scripts some of the sheets were drawn with; see its README. It is not part of the pack.
+`generators/` holds the scripts some of the sheets were drawn with; see its README. It is not part of the pack. How the worlds
+are made (the workshop, the checks, a delivery): [AGENTS.md](AGENTS.md).
 
 ## Licence
 
