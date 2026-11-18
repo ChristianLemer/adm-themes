@@ -1,0 +1,13 @@
+{
+  "format": 1,
+  "name": "School of Chiron · Terra",
+  "base": "pelion",
+  "art": ["room-floor"],
+  "px": { "1": "#a88e6c", "2": "#8c785c", "3": "#c2ab86" },
+  "text": { "subtitle": "Pelion · School of Chiron · Terra" },
+  "notes": [
+    "A style of Pelion (School of Chiron · Marble): everything is Pelion's but the floor, the one Pelion had before its white pebbles.",
+    "art room-floor: a quiet pebble mosaic in sand (1, lit 3, gaps 2) with a terracotta pebble and slate in a motif, its motifs a small terracotta flower and a pair of slate pebbles; the sanctum's rosette mosaic on a terracotta field (N), blue corner squares. The sheet is the one Pelion shipped at 00df42a; its generator is generators/pelion/room-floor.mjs at that commit.",
+    "px 1 2 3: the sand pebbles' colours of that floor (Pelion retuned them to bluish whites); no other drawn Pelion family uses them."
+  ]
+}

@@ -2,13 +2,14 @@
 
 Read [README.md](README.md) first: what the pack is and what each world folder holds. This file says how the worlds
 are made. The repo is both the pack people install and the workshop that draws it; the installer keeps only the
-theme folders (`pelion/`, `breakingbad/`), so everything else here never reaches a user.
+theme folders (`pelion/`, `pelion-terra/`, `breakingbad/`), so everything else here never reaches a user.
 
 ## What lives where
 
 | Path | What | Shipped |
 |---|---|---|
 | `pelion/`, `breakingbad/` | the worlds: `theme.json` (colours, wording, the `art` list and its `notes`) and sprite sheets (`<family>.png` + `.json`) | yes |
+| `pelion-terra/` | a style of Pelion (`base: "pelion"`): its own `px` for slots 1 2 3 and one sheet, the floor Pelion had before (its generator is `room-floor.mjs` at `00df42a`); nothing to draw, it follows Pelion | yes |
 | `pack.json` | the pack's name and format | yes |
 | `generators/<world>/` | the scripts that draw each sheet, one per art family (see `generators/README.md`) | no |
 | `docs/` | each world's design and plan (Pelion: `2026-11-17-pelion-world-design.md`, `2026-11-17-pelion-world-plan.md`) | no |
