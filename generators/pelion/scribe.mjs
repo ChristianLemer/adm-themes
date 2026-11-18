@@ -234,6 +234,52 @@ function outlineArm(a) {
   for (let y = 0; y < 16; y++) for (let x = 0; x < 8; x++) if (g[y][x] === '.' && [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => (g[y + dy]?.[x + dx] ?? '.') !== '.')) out[y][x] = 'k';
   return out;
 }
+// ---- the gestures at the table (optional frames, docs/theme-packs.md "Gestures"): the back view of `up 0`, its feet
+// where they are, the arms redrawn (the app lays no arm over a gesture). think: his right hand (screen right) raised to
+// the temple, the elbow out, the left forearm resting on the table as when seated; wonder: the right hand up on the
+// crown, scratching, the elbow high; stretch: both arms raised over the head, the left still in its himation to the
+// elbow.
+function backBare() { // the back without its arms: the shoulders only
+  const [r, put] = bodyRows(true);
+  put(15, 8, 'RRrrr'); put(16, 8, 'RRrr');
+  put(15, 22, 'bbb'); put(16, 22, 'bbbb');
+  return [r, put];
+}
+function leftAtRest(put) { // torsoUp's left arm, and the forearm forward as the app's armL lays it at the table
+  for (let y = 17; y <= 20; y++) { put(y, 6, 'Rrd'); put(y, 9, 'k'); }
+  put(21, 7, 'tt'); put(21, 9, 'k');
+  put(18, 8, ';:'); put(19, 7, ';::'); put(20, 6, ';;:'); put(21, 6, ';::'); put(22, 7, ';');
+}
+const skin = (put, pts) => pts.forEach(([y, x, s]) => put(y, x, s));
+function torsoThink() {
+  const [r, put] = backBare();
+  leftAtRest(put);
+  put(17, 23, 'BBB');
+  skin(put, [[9, 23, ':;;'], [10, 23, '::;'], [11, 24, ':;'], [12, 25, ':;'], [13, 25, ':;'], [14, 26, ':;'], [15, 26, ':;'],
+    [16, 26, '::'], [17, 26, ':;'], [18, 25, ';;']]);
+  return r;
+}
+function torsoWonder() {
+  const [r, put] = backBare();
+  leftAtRest(put);
+  put(17, 23, 'BBB');
+  skin(put, [[0, 20, '::;'], [1, 20, ':;;:'], [2, 22, ':;'], [3, 23, ':;'], [4, 24, ':;'], [5, 25, ':;'], [6, 25, ':;'],
+    [7, 26, ':;'], [8, 26, ':;'], [9, 27, ':;'], [10, 27, '::'], [11, 26, ':;'], [12, 25, ':;'], [13, 25, ':;'], [14, 24, ':;']]);
+  return r;
+}
+function torsoStretch() {
+  const [r, put] = backBare();
+  // the left arm: in its himation from the shoulder to the elbow, then bare, the hand open over the head
+  for (let y = 11; y <= 14; y++) put(y, 7, 'Rr');
+  put(10, 7, 'tt');
+  for (let y = 4; y <= 9; y++) put(y, 7 - (y < 7 ? 1 : 0), ':;');
+  put(1, 5, ':;'); put(2, 5, '::;'); put(3, 5, ':;');
+  // the right arm: the sleeve, then bare to the hand
+  put(14, 23, 'bb'); put(13, 23, 'BB');
+  for (let y = 4; y <= 12; y++) put(y, 23 + (y < 7 ? 1 : 0), ':;');
+  put(1, 24, ':;'); put(2, 23, ':;;'); put(3, 24, ':;');
+  return r;
+}
 export const frames = {};
 const build = (head, torso, legs) => rows(outline(frame(merge(head, torso, legs))));
 for (const s of [0, 1, 2]) {
@@ -241,6 +287,9 @@ for (const s of [0, 1, 2]) {
   frames[`up ${s}`] = build(HEAD_UP, torsoUp(), legsDown(s));
   frames[`right ${s}`] = build(HEAD_RIGHT, torsoRight(s), legsRight(s));
 }
+frames['up think'] = build(HEAD_UP, torsoThink(), legsDown(0));
+frames['up wonder'] = build(HEAD_UP, torsoWonder(), legsDown(0));
+frames['up stretch'] = build(HEAD_UP, torsoStretch(), legsDown(0));
 frames.arm = rows(outlineArm(ARM));
 for (const [n, f] of Object.entries(frames)) {
   const w = n === 'arm' ? 8 : W, h = n === 'arm' ? 16 : H;
@@ -248,7 +297,7 @@ for (const [n, f] of Object.entries(frames)) {
 }
 // arm: the forearm's elbow over the back view's right upper arm, armL its mirror over the left
 const anchors = { feet: [16, 34], arm: [18, 10], armL: [6, 10], scroll: [26, 14] };
-const layout = [['down 0', 'down 1', 'down 2', 'up 0', 'up 1', 'up 2', 'right 0', 'right 1', 'right 2'], ['arm']];
+const layout = [['down 0', 'down 1', 'down 2', 'up 0', 'up 1', 'up 2', 'right 0', 'right 1', 'right 2'], ['up think', 'up wonder', 'up stretch', 'arm']];
 // run as a script, write the sheet; imported (scribe39.mjs), only lend the frames
 if (import.meta.url === (await import('node:url')).pathToFileURL(process.argv[1]).href) {
   console.log(writeSheet('pelion/scribe', frames, layout, { app: 'adm-themes generators/pelion/scribe.mjs', anchors }));
