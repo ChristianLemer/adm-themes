@@ -72,7 +72,7 @@ export default () => {
     // Raked sand: a few lighter grains and darker pits, no grid.
     BREAKOUT_FLOOR: grid(16, 16, (x, y) => {
       const h = hash(x, y);
-      return h < 3 ? 'p' : h > 93 ? 'Q' : h % 29 === 0 ? '3' : 'P';
+      return h < 3 ? 'p' : h > 93 ? 'Q' : h % 29 === 0 ? 'q' : 'P';
     }),
     // The kerb: low marble blocks (8 px), a lit arris, a shaded foot; rows 0..2 clear.
     BREAKOUT_RAIL: grid(16, 10, (x, y) => (y < 3 ? '.' : y === 3 || y === 9 ? 'k' : y === 4 ? 'X'

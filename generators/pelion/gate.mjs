@@ -9,7 +9,7 @@
 // The opening is the default's (x 16-47, rows 10-53, the leaves 16 x 44 at x 16 and 32): the entablature is drawn over
 // the leaves' top (rows 10-18 of the frame) and the threshold over their foot, so the doorway shows from row 19 to 51.
 // Slots: marble X (lit) s 7 4 9 6, painted u (blue) x (red); bronze h g G U; dusk @ $ % with the glow N f, the ridges
-// S V, the slope M v Y, the path 3 1 2, the olive w W M Y; a star O.
+// S V, the slope M v Y, the path P B Q, the olive w W M Y; a star O.
 const { writeSheet } = await import(process.cwd() + '/tools/sheet_writer.mjs');
 
 const grid = (w, h) => Array.from({ length: h }, () => Array(w).fill('.'));
@@ -110,7 +110,7 @@ const frames = {};
   // the sand path climbing from the doorway to the ridge
   for (let y = 22; y < 44; y++) {
     const k = (y - 22) / 21, cx = Math.round(14 + 4 * Math.sin(k * 3.2) - 2 * k), w = Math.max(1, Math.round(1 + k * 9));
-    fill(g, cx - (w >> 1), y, w, 1, '3'); dot(g, cx - (w >> 1), y, '1'); if (w > 3) dot(g, cx + (w >> 1), y, '2');
+    fill(g, cx - (w >> 1), y, w, 1, 'P'); dot(g, cx - (w >> 1), y, 'B'); if (w > 3) dot(g, cx + (w >> 1), y, 'Q');
   }
   // the olive tree on the right of the path: a twisted trunk, a silver-green crown
   put(g, 20, 14, [
