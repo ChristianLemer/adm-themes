@@ -148,7 +148,7 @@ function legsRight(step) {
   return r;
 }
 
-const frames = {};
+export const frames = {};
 const build = (...p) => rows(outline(frame(merge(...p))));
 for (const s of [0, 1, 2]) {
   frames[`down ${s}`] = build(HEAD_DOWN, bodyDown(), legs(s));
@@ -169,5 +169,6 @@ for (const [n, f] of Object.entries(frames)) {
 }
 const anchors = { feet: [12, 28], 'glyph down': [14, 18], 'glyph up': [5, 18] };
 const layout = [['down 0', 'down 1', 'down 2', 'up 0', 'up 1', 'up 2', 'right 0', 'right 1', 'right 2'], ['glyph explore', 'glyph plan', 'glyph general', 'glyph custom']];
-console.log(writeSheet('pelion/adept', frames, layout, { app: 'adm-themes generators/pelion/adept.mjs', anchors }));
+// run as a script, write the sheet; imported (adept39.mjs), only lend the frames
+if (import.meta.url === (await import('node:url')).pathToFileURL(process.argv[1]).href) console.log(writeSheet('pelion/adept', frames, layout, { app: 'adm-themes generators/pelion/adept.mjs', anchors }));
 if (process.argv.includes('--print')) for (const [n, f] of Object.entries(frames)) console.log(n + '\n' + f.join('\n'));

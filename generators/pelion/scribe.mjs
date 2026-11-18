@@ -234,7 +234,7 @@ function outlineArm(a) {
   for (let y = 0; y < 16; y++) for (let x = 0; x < 8; x++) if (g[y][x] === '.' && [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => (g[y + dy]?.[x + dx] ?? '.') !== '.')) out[y][x] = 'k';
   return out;
 }
-const frames = {};
+export const frames = {};
 const build = (head, torso, legs) => rows(outline(frame(merge(head, torso, legs))));
 for (const s of [0, 1, 2]) {
   frames[`down ${s}`] = build(HEAD_DOWN, torsoDown(), legsDown(s));
@@ -249,5 +249,8 @@ for (const [n, f] of Object.entries(frames)) {
 // arm: the forearm's elbow over the back view's right upper arm, armL its mirror over the left
 const anchors = { feet: [16, 34], arm: [18, 10], armL: [6, 10], scroll: [26, 14] };
 const layout = [['down 0', 'down 1', 'down 2', 'up 0', 'up 1', 'up 2', 'right 0', 'right 1', 'right 2'], ['arm']];
-console.log(writeSheet('pelion/scribe', frames, layout, { app: 'adm-themes generators/pelion/scribe.mjs', anchors }));
-if (process.argv.includes('--print')) for (const [n, f] of Object.entries(frames)) console.log(n + '\n' + f.join('\n'));
+// run as a script, write the sheet; imported (scribe39.mjs), only lend the frames
+if (import.meta.url === (await import('node:url')).pathToFileURL(process.argv[1]).href) {
+  console.log(writeSheet('pelion/scribe', frames, layout, { app: 'adm-themes generators/pelion/scribe.mjs', anchors }));
+  if (process.argv.includes('--print')) for (const [n, f] of Object.entries(frames)) console.log(n + '\n' + f.join('\n'));
+}
