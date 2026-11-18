@@ -1,7 +1,8 @@
-// Pelion's tables (the workstations family): the student's marble table (a slab on two painted pedestals, a wax
-// diptych standing open at the back, a bronze stylus, a pebble abacus, a clay oil lamp), the reading stand (an olive-wood
-// table with a slanted board holding an open papyrus scroll, a lamp beside it), the helper's small marble table (one
-// pedestal like the students', a little wax tablet on a prop), and the shell's turn: a bronze armillary ring spinning on its pin, sixteen steps.
+// Pelion's tables (the workstations family): the student's marble table (a slab on two painted pedestals, a wax diptych
+// standing open at the back, a bronze stylus, a pebble abacus, a clay oil lamp), the compact table (the app's lectern:
+// the same table made narrow, a smaller diptych, no abacus), the helper's small marble table (one pedestal like the
+// students', a little wax tablet on a prop), and the shell's turn: a bronze armillary ring spinning on its pin, sixteen
+// steps.
 // Run from the Administratum root: node <this file>. Writes ui/art/pelion/workstations.png + .json.
 //
 // Slots: marble X (lit arris) s (face) 7 (veins) 4 9 6 (the grey-blue shades); olive wood L w W; bronze h g G U;
@@ -98,40 +99,45 @@ const frames = {};
   frames.DESK = out(g);
 }
 
-// --- the reading stand, 44 x 42 ----------------------------------------------------------------------------------------
+// --- the compact table (the app's lectern, where the hall is crowded), 44 x 42 ----------------------------------------
+// The student's table made narrow: the same marble slab with its painted bead band on two pedestals, a smaller wax
+// diptych open at the back, the stylus, the clay lamp at the right; no room for the abacus. Its diptych and lamp sit
+// in the default lectern's face rects (ui/art/faces.json: the slate 0..23 x 0..17, the lamp in candle, candle 2, dish,
+// flame), as the student's table's do in the desk's, so the flat frame composes back whole.
 {
   const g = grid(44, 42);
-  // the slanted board at the back, olive wood
-  fill(g, 0, 4, 24, 16, 'k');
-  fill(g, 1, 5, 22, 14, 'w');
-  fill(g, 1, 5, 22, 1, 'L'); fill(g, 1, 5, 1, 14, 'L'); fill(g, 1, 18, 22, 1, 'W');
-  // the open scroll on it: the two rolled ends with their bronze knobs, the sheet between, two columns of writing
-  for (const x of [2, 19]) {
-    put(g, x, 4, ['.h.', 'kgk']);
-    fill(g, x, 6, 3, 12, 'p'); for (let y = 6; y < 18; y++) { g[y][x] = 'k'; g[y][x + 2] = 'P'; }
-    for (let y = 7; y < 17; y += 2) g[y][x + 1] = 'P';
-    put(g, x, 18, ['kgk', '.h.']);
-  }
-  fill(g, 5, 7, 14, 10, 'p');
-  fill(g, 5, 16, 14, 1, 'P'); fill(g, 5, 7, 14, 1, 'P');
-  for (const [x0, ls] of [[6, [']]].]', '.]]]]', ']].]]', ']]]..']], [13, [']].]]', ']]]].', '.]]].', ']]...']]]) {
-    ls.forEach((s, j) => [...s].forEach((c, i) => { if (c !== '.') dot(g, x0 + i, 9 + 2 * j, c); }));
-  }
-  fill(g, 12, 8, 1, 8, 'P'); // the join between two sheets
-  // the table: olive-wood top, its lit edge, the front rail with a bronze strap
-  fill(g, 0, 20, 44, 1, 'k');
-  fill(g, 0, 21, 44, 6, 'w'); fill(g, 1, 21, 42, 1, 'L');
-  for (const [x, y, n] of [[5, 23, 6], [20, 24, 8], [31, 22, 5], [12, 25, 4]]) fill(g, x, y, n, 1, 'L');
-  fill(g, 0, 27, 44, 1, 'L'); fill(g, 0, 28, 44, 2, 'W'); fill(g, 0, 30, 44, 1, 'k');
-  for (let y = 21; y < 30; y++) { g[y][0] = 'k'; g[y][43] = 'k'; }
-  for (const x of [8, 35]) put(g, x, 28, ['hg', 'gG']);
-  // a stretcher and two turned legs with bronze feet; a rolled scroll lies on the stretcher
-  fill(g, 6, 35, 32, 1, 'k'); fill(g, 6, 36, 32, 1, 'w'); fill(g, 6, 37, 32, 1, 'k');
-  put(g, 14, 33, ['kkkkkkkkkkkkkk', 'kPpppppppppppk', 'kkkkkkkkkkkkkk'].map((r, j) => (j === 1 ? 'kPpppppppppPxk' : r)));
-  for (const x of [2, 37]) put(g, x, 31, ['kLwk', 'kLwk', '.kk.', 'kLwk', 'kLwk', 'kLwk', 'kLwk', '.kk.', 'kghk', 'kGGk', 'kkkk']);
-  // the lamp at the right of the board, its shadow
+  fill(g, 0, 18, 44, 1, 'k');
+  fill(g, 0, 19, 44, 7, 's');
+  for (const [x, y, n] of [[3, 19, 4], [7, 20, 3], [24, 23, 4], [28, 24, 2], [36, 20, 3]]) fill(g, x, y, n, 1, '7');
+  fill(g, 0, 26, 44, 1, 'X');
+  fill(g, 0, 27, 44, 1, '7'); fill(g, 0, 28, 44, 1, '4'); fill(g, 0, 29, 44, 1, '9');
+  for (let x = 2; x < 42; x += 6) { dot(g, x, 28, 'u'); dot(g, x + 3, 28, 'x'); }
+  fill(g, 0, 30, 44, 1, 'k');
+  for (let y = 18; y < 30; y++) { g[y][0] = 'k'; g[y][43] = 'k'; }
+  for (let y = 19; y < 26; y++) { g[y][1] = 'X'; g[y][42] = '9'; }
+  g[27][42] = '9'; g[28][42] = '6'; g[29][42] = '6';
+  fill(g, 10, 31, 24, 1, '6'); fill(g, 10, 32, 24, 1, '9'); fill(g, 10, 33, 24, 1, 'k');
+  const PED = [
+    'k6666666k',
+    'kXs77779k',
+    'kuuuuuuuk',
+    '.kXs449k.',
+    '.kXs449k.',
+    '.kXs449k.',
+    '.kXs469k.',
+    'kkXs449kk',
+    'kXXs4499k',
+    'kX7ss449k',
+    'kkkkkkkkk',
+  ];
+  put(g, 2, 31, PED); put(g, 33, 31, PED);
+  leaf(g, 2, 7, 10, 13, [[1, 'cc.ccc'], [3, 'ccc.cc'], [5, 'c.ccc.'], [7, 'cc.c..']]);
+  leaf(g, 13, 7, 10, 13, [[1, 'ccc.cc'], [3, 'cc.c..'], [5, 'ccc...'], [7, '......']]);
+  fill(g, 12, 8, 1, 11, 'W'); dot(g, 12, 10, 'x'); dot(g, 12, 16, 'x'); dot(g, 12, 7, 'k'); dot(g, 12, 19, 'k');
+  fill(g, 3, 20, 21, 1, '9');
+  put(g, 26, 21, ['.........XhG', '.....XhhgG9.', '.kXhgG99....', '..99........']);
   put(g, 32, 7, LAMP_L);
-  fill(g, 33, 18, 9, 1, 'W'); fill(g, 34, 19, 7, 1, 'k');
+  fill(g, 34, 19, 7, 1, '9');
   frames.LECTERN = out(g);
 }
 
@@ -194,8 +200,8 @@ const layout = [['DESK', 'LECTERN', 'CONSOLE', ...Array.from({ length: 16 }, (_,
 const anchors = {
   DESK: { screen: [15, 9, 19, 9], lamp: [16, 0], seals: [[3, 24], [11, 25], [54, 24]], candle: [49, 9], slate: [24, 13],
     shadow: [2, 42, 60, 4], paper: [2, 21], pile: [32, 24], cog: [7, 11], puff: [32, 22] },
-  LECTERN: { screen: [5, 7, 14, 10], lamp: [5, -1], seals: [[1, 26], [24, 27], [38, 27]], candle: [33, 9], slate: [12, 12],
-    shadow: [2, 42, 40, 4], paper: [2, 21], pile: [22, 24], cog: [28, 25], puff: [22, 22] },
+  LECTERN: { screen: [4, 9, 17, 9], lamp: [5, 0], seals: [[3, 24], [20, 25], [38, 24]], candle: [33, 9], slate: [12, 13],
+    shadow: [2, 42, 40, 4], paper: [2, 21], pile: [22, 24], cog: [3, 11], puff: [22, 22] },
   CONSOLE: { screen: [9, 2, 10, 6], lamp: [23, 2], seals: [[30, 7]], shadow: [8, 20, 12, 2], paper: [30, 16], pile: [14, 12], light: [14, 5] },
 };
 console.log(writeSheet('pelion/workstations', frames, layout, { app: 'adm-themes generators/pelion/workstations.mjs', anchors }));
