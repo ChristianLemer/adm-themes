@@ -1,0 +1,1678 @@
+{
+  "frames": {
+    "DESK top": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 10
+      }
+    },
+    "DESK side": {
+      "frame": {
+        "x": 65,
+        "y": 0,
+        "w": 10,
+        "h": 16
+      }
+    },
+    "LECTERN top": {
+      "frame": {
+        "x": 76,
+        "y": 0,
+        "w": 44,
+        "h": 10
+      }
+    },
+    "LECTERN side": {
+      "frame": {
+        "x": 121,
+        "y": 0,
+        "w": 10,
+        "h": 16
+      }
+    },
+    "CONSOLE top": {
+      "frame": {
+        "x": 132,
+        "y": 0,
+        "w": 22,
+        "h": 6
+      }
+    },
+    "CONSOLE side": {
+      "frame": {
+        "x": 155,
+        "y": 0,
+        "w": 6,
+        "h": 8
+      }
+    },
+    "LORD_DESK top": {
+      "frame": {
+        "x": 162,
+        "y": 0,
+        "w": 88,
+        "h": 11
+      }
+    },
+    "LORD_DESK side": {
+      "frame": {
+        "x": 251,
+        "y": 0,
+        "w": 11,
+        "h": 16
+      }
+    }
+  },
+  "meta": {
+    "app": "adm-themes generators/pelion/faces.mjs",
+    "image": "faces.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 262,
+      "h": 16
+    },
+    "palette": "key.gpl",
+    "anchors": {},
+    "objects": {
+      "DESK": {
+        "front": [
+          0,
+          26,
+          64,
+          16
+        ],
+        "d": 24,
+        "details": [
+          {
+            "name": "pedestal",
+            "rect": [
+              2,
+              31,
+              9,
+              11
+            ],
+            "kind": "box",
+            "v": 4,
+            "d": 16
+          },
+          {
+            "name": "pedestal 2",
+            "rect": [
+              53,
+              31,
+              9,
+              11
+            ],
+            "kind": "box",
+            "v": 4,
+            "d": 16
+          },
+          {
+            "name": "stretcher",
+            "rect": [
+              10,
+              31,
+              44,
+              3
+            ],
+            "kind": "box",
+            "v": 6,
+            "d": 2
+          },
+          {
+            "name": "diptych",
+            "rect": [
+              13,
+              7,
+              23,
+              13
+            ],
+            "kind": "box",
+            "v": 5,
+            "d": 2,
+            "z": 16
+          },
+          {
+            "name": "abacus",
+            "rect": [
+              38,
+              19,
+              15,
+              7
+            ],
+            "kind": "top",
+            "v": 5
+          },
+          {
+            "name": "stylus",
+            "rect": [
+              8,
+              21,
+              12,
+              4
+            ],
+            "kind": "top",
+            "v": 13
+          },
+          {
+            "name": "lamp",
+            "rect": [
+              48,
+              11,
+              12,
+              7
+            ],
+            "kind": "cyl",
+            "v": 8,
+            "z": 16
+          },
+          {
+            "name": "flame",
+            "rect": [
+              48,
+              7,
+              4,
+              4
+            ],
+            "kind": "bill",
+            "v": 8,
+            "z": 23
+          }
+        ],
+        "flatOnly": [
+          {
+            "name": "the slab top as the flat view draws it",
+            "rect": [
+              0,
+              18,
+              64,
+              8
+            ]
+          }
+        ]
+      },
+      "LECTERN": {
+        "front": [
+          0,
+          26,
+          44,
+          16
+        ],
+        "d": 24,
+        "details": [
+          {
+            "name": "pedestal",
+            "rect": [
+              2,
+              31,
+              9,
+              11
+            ],
+            "kind": "box",
+            "v": 4,
+            "d": 16
+          },
+          {
+            "name": "pedestal 2",
+            "rect": [
+              33,
+              31,
+              9,
+              11
+            ],
+            "kind": "box",
+            "v": 4,
+            "d": 16
+          },
+          {
+            "name": "stretcher",
+            "rect": [
+              10,
+              31,
+              24,
+              3
+            ],
+            "kind": "box",
+            "v": 6,
+            "d": 2
+          },
+          {
+            "name": "diptych",
+            "rect": [
+              2,
+              7,
+              21,
+              13
+            ],
+            "kind": "box",
+            "v": 5,
+            "d": 2,
+            "z": 16
+          },
+          {
+            "name": "stylus",
+            "rect": [
+              26,
+              21,
+              12,
+              4
+            ],
+            "kind": "top",
+            "v": 13
+          },
+          {
+            "name": "lamp",
+            "rect": [
+              32,
+              11,
+              12,
+              7
+            ],
+            "kind": "cyl",
+            "v": 8,
+            "z": 16
+          },
+          {
+            "name": "flame",
+            "rect": [
+              32,
+              7,
+              4,
+              4
+            ],
+            "kind": "bill",
+            "v": 8,
+            "z": 23
+          }
+        ],
+        "flatOnly": [
+          {
+            "name": "the slab top as the flat view draws it",
+            "rect": [
+              0,
+              18,
+              44,
+              8
+            ]
+          }
+        ]
+      },
+      "CONSOLE": {
+        "front": [
+          3,
+          12,
+          22,
+          8
+        ],
+        "d": 14,
+        "details": [
+          {
+            "name": "pedestal",
+            "rect": [
+              9,
+              13,
+              9,
+              7
+            ],
+            "kind": "box",
+            "v": 3,
+            "d": 8
+          },
+          {
+            "name": "tablet",
+            "rect": [
+              7,
+              0,
+              15,
+              10
+            ],
+            "kind": "box",
+            "v": 4,
+            "d": 2,
+            "z": 8
+          }
+        ],
+        "flatOnly": [
+          {
+            "name": "the top and the stylus as the flat view draws them",
+            "rect": [
+              3,
+              8,
+              22,
+              4
+            ]
+          }
+        ]
+      },
+      "SHELF": {
+        "front": [
+          0,
+          0,
+          64,
+          42
+        ],
+        "d": 10
+      },
+      "SHELF_B": {
+        "front": [
+          0,
+          0,
+          64,
+          42
+        ],
+        "d": 10
+      },
+      "COGITATOR": {
+        "front": [
+          9,
+          15,
+          146,
+          82
+        ],
+        "d": 22,
+        "recess": [
+          {
+            "name": "screen",
+            "rect": [
+              66,
+              27,
+              32,
+              33
+            ],
+            "depth": 3,
+            "wall": "k"
+          },
+          {
+            "name": "wave",
+            "rect": [
+              34,
+              27,
+              22,
+              17
+            ],
+            "depth": 3,
+            "wall": "k"
+          },
+          {
+            "name": "bars",
+            "rect": [
+              108,
+              27,
+              22,
+              17
+            ],
+            "depth": 3,
+            "wall": "k"
+          }
+        ],
+        "details": [
+          {
+            "name": "vents L",
+            "rect": [
+              34,
+              6,
+              21,
+              9
+            ],
+            "kind": "box",
+            "v": 6,
+            "d": 8
+          },
+          {
+            "name": "vents R",
+            "rect": [
+              108,
+              6,
+              22,
+              9
+            ],
+            "kind": "box",
+            "v": 6,
+            "d": 8
+          },
+          {
+            "name": "spire",
+            "rect": [
+              70,
+              0,
+              24,
+              15
+            ],
+            "kind": "spire",
+            "v": 9,
+            "parts": [
+              {
+                "name": "cog",
+                "rect": [
+                  70,
+                  2,
+                  24,
+                  13
+                ],
+                "kind": "disc",
+                "t": 3,
+                "rim": "G"
+              },
+              {
+                "name": "knob",
+                "rect": [
+                  80,
+                  0,
+                  4,
+                  3
+                ],
+                "kind": "cyl",
+                "v": 10
+              }
+            ]
+          },
+          {
+            "name": "gauge 1",
+            "rect": [
+              34,
+              48,
+              11,
+              11
+            ],
+            "kind": "disc",
+            "t": 2,
+            "rim": "G",
+            "round": true
+          },
+          {
+            "name": "gauge 2",
+            "rect": [
+              45,
+              48,
+              11,
+              11
+            ],
+            "kind": "disc",
+            "t": 2,
+            "rim": "G",
+            "round": true
+          },
+          {
+            "name": "gauge 3",
+            "rect": [
+              108,
+              48,
+              11,
+              11
+            ],
+            "kind": "disc",
+            "t": 2,
+            "rim": "k",
+            "round": true
+          },
+          {
+            "name": "gauge 4",
+            "rect": [
+              119,
+              48,
+              11,
+              11
+            ],
+            "kind": "disc",
+            "t": 2,
+            "rim": "k",
+            "round": true
+          },
+          {
+            "name": "dial 1",
+            "rect": [
+              12,
+              25,
+              13,
+              15
+            ],
+            "kind": "disc",
+            "t": 1,
+            "rim": "M",
+            "round": true
+          },
+          {
+            "name": "dial 2",
+            "rect": [
+              12,
+              47,
+              13,
+              15
+            ],
+            "kind": "disc",
+            "t": 1,
+            "rim": "M",
+            "round": true
+          },
+          {
+            "name": "dial 3",
+            "rect": [
+              139,
+              25,
+              13,
+              15
+            ],
+            "kind": "disc",
+            "t": 1,
+            "rim": "M",
+            "round": true
+          },
+          {
+            "name": "dial 4",
+            "rect": [
+              139,
+              47,
+              13,
+              15
+            ],
+            "kind": "disc",
+            "t": 1,
+            "rim": "M",
+            "round": true
+          },
+          {
+            "name": "drum L",
+            "rect": [
+              0,
+              29,
+              11,
+              68
+            ],
+            "kind": "cyl",
+            "v": 15
+          },
+          {
+            "name": "drum R",
+            "rect": [
+              153,
+              29,
+              11,
+              68
+            ],
+            "kind": "cyl",
+            "v": 15
+          }
+        ],
+        "flatOnly": [
+          {
+            "name": "painted shadow",
+            "rect": [
+              0,
+              97,
+              164,
+              3
+            ]
+          }
+        ]
+      },
+      "CRATE": {
+        "front": [
+          0,
+          4,
+          28,
+          20
+        ],
+        "d": 24,
+        "details": [
+          {
+            "name": "tins",
+            "rect": [
+              1,
+              0,
+              22,
+              4
+            ],
+            "kind": "box",
+            "v": 8,
+            "d": 6
+          }
+        ]
+      },
+      "TABLE": {
+        "d": 20,
+        "details": [
+          {
+            "name": "leg 1",
+            "rect": [
+              1,
+              4,
+              3,
+              12
+            ],
+            "kind": "box",
+            "u": 1,
+            "v": 1,
+            "z": 0,
+            "d": 3
+          },
+          {
+            "name": "leg 2",
+            "rect": [
+              1,
+              4,
+              3,
+              12
+            ],
+            "kind": "box",
+            "u": 1,
+            "v": 16,
+            "z": 0,
+            "d": 3
+          },
+          {
+            "name": "leg 3",
+            "rect": [
+              44,
+              4,
+              3,
+              12
+            ],
+            "kind": "box",
+            "u": 44,
+            "v": 1,
+            "z": 0,
+            "d": 3
+          },
+          {
+            "name": "leg 4",
+            "rect": [
+              44,
+              4,
+              3,
+              12
+            ],
+            "kind": "box",
+            "u": 44,
+            "v": 16,
+            "z": 0,
+            "d": 3
+          },
+          {
+            "name": "leg 5",
+            "rect": [
+              87,
+              4,
+              3,
+              12
+            ],
+            "kind": "box",
+            "u": 87,
+            "v": 1,
+            "z": 0,
+            "d": 3
+          },
+          {
+            "name": "leg 6",
+            "rect": [
+              87,
+              4,
+              3,
+              12
+            ],
+            "kind": "box",
+            "u": 87,
+            "v": 16,
+            "z": 0,
+            "d": 3
+          },
+          {
+            "name": "board",
+            "rect": [
+              0,
+              12,
+              92,
+              4
+            ],
+            "kind": "box",
+            "u": 0,
+            "v": 0,
+            "z": 12,
+            "d": 20
+          },
+          {
+            "name": "plate 1",
+            "rect": [
+              14,
+              3,
+              6,
+              6
+            ],
+            "kind": "top",
+            "v": 7,
+            "z": 16
+          },
+          {
+            "name": "mug 1",
+            "rect": [
+              26,
+              4,
+              5,
+              4
+            ],
+            "kind": "cyl",
+            "v": 13,
+            "z": 16
+          },
+          {
+            "name": "handle 1",
+            "rect": [
+              31,
+              4,
+              2,
+              4
+            ],
+            "kind": "box",
+            "v": 12,
+            "z": 16,
+            "d": 1
+          },
+          {
+            "name": "plate 2",
+            "rect": [
+              42,
+              3,
+              6,
+              6
+            ],
+            "kind": "top",
+            "v": 7,
+            "z": 16
+          },
+          {
+            "name": "cup",
+            "rect": [
+              56,
+              5,
+              2,
+              2
+            ],
+            "kind": "cyl",
+            "v": 14,
+            "z": 16
+          },
+          {
+            "name": "plate 3",
+            "rect": [
+              70,
+              3,
+              6,
+              6
+            ],
+            "kind": "top",
+            "v": 7,
+            "z": 16
+          },
+          {
+            "name": "mug 2",
+            "rect": [
+              84,
+              3,
+              4,
+              4
+            ],
+            "kind": "cyl",
+            "v": 11,
+            "z": 16
+          },
+          {
+            "name": "handle 2",
+            "rect": [
+              88,
+              3,
+              2,
+              4
+            ],
+            "kind": "box",
+            "v": 10,
+            "z": 16,
+            "d": 1
+          }
+        ],
+        "flatOnly": [
+          {
+            "name": "table",
+            "rect": [
+              0,
+              0,
+              92,
+              16
+            ]
+          }
+        ]
+      },
+      "BENCH": {
+        "d": 9,
+        "details": [
+          {
+            "name": "leg 1",
+            "rect": [
+              1,
+              0,
+              3,
+              7
+            ],
+            "kind": "box",
+            "u": 1,
+            "v": 1,
+            "z": 0,
+            "d": 3
+          },
+          {
+            "name": "leg 2",
+            "rect": [
+              1,
+              0,
+              3,
+              7
+            ],
+            "kind": "box",
+            "u": 1,
+            "v": 5,
+            "z": 0,
+            "d": 3
+          },
+          {
+            "name": "leg 3",
+            "rect": [
+              44,
+              0,
+              3,
+              7
+            ],
+            "kind": "box",
+            "u": 44,
+            "v": 1,
+            "z": 0,
+            "d": 3
+          },
+          {
+            "name": "leg 4",
+            "rect": [
+              44,
+              0,
+              3,
+              7
+            ],
+            "kind": "box",
+            "u": 44,
+            "v": 5,
+            "z": 0,
+            "d": 3
+          },
+          {
+            "name": "leg 5",
+            "rect": [
+              87,
+              0,
+              3,
+              7
+            ],
+            "kind": "box",
+            "u": 87,
+            "v": 1,
+            "z": 0,
+            "d": 3
+          },
+          {
+            "name": "leg 6",
+            "rect": [
+              87,
+              0,
+              3,
+              7
+            ],
+            "kind": "box",
+            "u": 87,
+            "v": 5,
+            "z": 0,
+            "d": 3
+          },
+          {
+            "name": "seat",
+            "rect": [
+              0,
+              0,
+              92,
+              2
+            ],
+            "kind": "box",
+            "u": 0,
+            "v": 0,
+            "z": 7,
+            "d": 9
+          }
+        ],
+        "flatOnly": [
+          {
+            "name": "bench",
+            "rect": [
+              0,
+              0,
+              92,
+              8
+            ]
+          }
+        ]
+      },
+      "RECAFF": {
+        "d": 16,
+        "details": [
+          {
+            "name": "pedestal",
+            "rect": [
+              7,
+              22,
+              18,
+              14
+            ],
+            "kind": "cyl",
+            "v": 8
+          },
+          {
+            "name": "krater",
+            "rect": [
+              0,
+              0,
+              32,
+              22
+            ],
+            "kind": "cyl",
+            "v": 8
+          },
+          {
+            "name": "jug",
+            "rect": [
+              0,
+              26,
+              7,
+              10
+            ],
+            "kind": "cyl",
+            "v": 13
+          },
+          {
+            "name": "hydria",
+            "rect": [
+              25,
+              25,
+              7,
+              11
+            ],
+            "kind": "cyl",
+            "v": 13
+          }
+        ]
+      },
+      "LORD_DESK": {
+        "front": [
+          0,
+          10,
+          88,
+          16
+        ],
+        "d": 26,
+        "details": [
+          {
+            "name": "support",
+            "rect": [
+              6,
+              14,
+              12,
+              12
+            ],
+            "kind": "box",
+            "v": 6,
+            "d": 14
+          },
+          {
+            "name": "support 2",
+            "rect": [
+              70,
+              14,
+              12,
+              12
+            ],
+            "kind": "box",
+            "v": 6,
+            "d": 14
+          },
+          {
+            "name": "lyre",
+            "rect": [
+              8,
+              0,
+              12,
+              9
+            ],
+            "kind": "box",
+            "v": 9,
+            "d": 2,
+            "z": 16
+          },
+          {
+            "name": "mortar",
+            "rect": [
+              35,
+              0,
+              11,
+              9
+            ],
+            "kind": "cyl",
+            "v": 12,
+            "z": 16
+          },
+          {
+            "name": "scrolls",
+            "rect": [
+              51,
+              3,
+              37,
+              6
+            ],
+            "kind": "top",
+            "v": 6
+          }
+        ],
+        "flatOnly": [
+          {
+            "name": "the slab top and what lies on it as the flat view draws them",
+            "rect": [
+              0,
+              0,
+              88,
+              10
+            ]
+          }
+        ]
+      },
+      "THRONE": {
+        "front": [
+          2,
+          28,
+          36,
+          12
+        ],
+        "d": 24,
+        "details": [
+          {
+            "name": "back",
+            "rect": [
+              8,
+              8,
+              24,
+              20
+            ],
+            "kind": "box",
+            "v": 0,
+            "d": 5
+          },
+          {
+            "name": "arm L",
+            "rect": [
+              2,
+              22,
+              6,
+              6
+            ],
+            "kind": "box",
+            "v": 4,
+            "d": 18
+          },
+          {
+            "name": "arm R",
+            "rect": [
+              32,
+              22,
+              6,
+              6
+            ],
+            "kind": "box",
+            "v": 4,
+            "d": 18
+          },
+          {
+            "name": "crest",
+            "rect": [
+              10,
+              0,
+              20,
+              8
+            ],
+            "kind": "disc",
+            "v": 1,
+            "t": 2,
+            "rim": "B"
+          }
+        ]
+      },
+      "COG_MECH": {
+        "details": [
+          {
+            "name": "cog",
+            "rect": [
+              2,
+              0,
+              36,
+              36
+            ],
+            "kind": "disc",
+            "v": 0,
+            "t": 3,
+            "rim": "B",
+            "round": true
+          }
+        ]
+      },
+      "SEAL": {
+        "details": [
+          {
+            "name": "wax",
+            "rect": [
+              1,
+              0,
+              10,
+              8
+            ],
+            "kind": "disc",
+            "v": 1,
+            "t": 2,
+            "rim": "r"
+          },
+          {
+            "name": "ribbon",
+            "rect": [
+              2,
+              8,
+              7,
+              12
+            ],
+            "kind": "disc",
+            "v": 0,
+            "t": 1,
+            "rim": "P"
+          }
+        ]
+      },
+      "GAUGE": {
+        "details": [
+          {
+            "name": "dial",
+            "rect": [
+              0,
+              0,
+              12,
+              12
+            ],
+            "kind": "disc",
+            "v": 0,
+            "t": 2,
+            "rim": "G"
+          }
+        ]
+      },
+      "CENSER": {
+        "details": [
+          {
+            "name": "bowl",
+            "rect": [
+              0,
+              7,
+              10,
+              11
+            ],
+            "kind": "cyl",
+            "v": 5
+          },
+          {
+            "name": "chain",
+            "rect": [
+              4,
+              0,
+              2,
+              7
+            ],
+            "kind": "bill",
+            "v": 5
+          }
+        ]
+      },
+      "CANDLES": {
+        "details": [
+          {
+            "name": "dish",
+            "rect": [
+              0,
+              13,
+              24,
+              5
+            ],
+            "kind": "cyl",
+            "v": 12
+          },
+          {
+            "name": "candle 1",
+            "rect": [
+              2,
+              6,
+              7,
+              7
+            ],
+            "kind": "cyl",
+            "v": 10
+          },
+          {
+            "name": "candle 2",
+            "rect": [
+              10,
+              6,
+              7,
+              7
+            ],
+            "kind": "cyl",
+            "v": 14
+          },
+          {
+            "name": "candle 3",
+            "rect": [
+              18,
+              8,
+              6,
+              5
+            ],
+            "kind": "cyl",
+            "v": 11
+          },
+          {
+            "name": "flame 1",
+            "rect": [
+              3,
+              0,
+              4,
+              6
+            ],
+            "kind": "bill",
+            "v": 10
+          },
+          {
+            "name": "flame 2",
+            "rect": [
+              11,
+              0,
+              4,
+              6
+            ],
+            "kind": "bill",
+            "v": 14
+          },
+          {
+            "name": "flame 3",
+            "rect": [
+              19,
+              2,
+              4,
+              6
+            ],
+            "kind": "bill",
+            "v": 11
+          }
+        ]
+      },
+      "BRAZIER": {
+        "details": [
+          {
+            "name": "foot",
+            "rect": [
+              2,
+              20,
+              14,
+              6
+            ],
+            "kind": "cyl",
+            "v": 7
+          },
+          {
+            "name": "stem",
+            "rect": [
+              6,
+              11,
+              6,
+              9
+            ],
+            "kind": "cyl",
+            "v": 7
+          },
+          {
+            "name": "bowl",
+            "rect": [
+              2,
+              7,
+              14,
+              4
+            ],
+            "kind": "cyl",
+            "v": 7
+          },
+          {
+            "name": "fire",
+            "rect": [
+              4,
+              0,
+              10,
+              7
+            ],
+            "kind": "bill",
+            "v": 7
+          }
+        ]
+      },
+      "GATE": {
+        "details": [
+          {
+            "name": "base",
+            "rect": [
+              0,
+              57,
+              64,
+              3
+            ],
+            "kind": "box",
+            "v": 0,
+            "d": 30
+          },
+          {
+            "name": "step",
+            "rect": [
+              0,
+              54,
+              64,
+              3
+            ],
+            "kind": "box",
+            "v": 2,
+            "d": 26
+          },
+          {
+            "name": "pier L",
+            "rect": [
+              0,
+              10,
+              13,
+              44
+            ],
+            "kind": "box",
+            "v": 4,
+            "d": 16
+          },
+          {
+            "name": "pier R",
+            "rect": [
+              51,
+              10,
+              13,
+              44
+            ],
+            "kind": "box",
+            "v": 4,
+            "d": 16
+          },
+          {
+            "name": "spire L",
+            "rect": [
+              0,
+              0,
+              13,
+              10
+            ],
+            "kind": "disc",
+            "v": 8,
+            "t": 8,
+            "rim": "G"
+          },
+          {
+            "name": "spire R",
+            "rect": [
+              51,
+              0,
+              13,
+              10
+            ],
+            "kind": "disc",
+            "v": 8,
+            "t": 8,
+            "rim": "G"
+          },
+          {
+            "name": "leaves",
+            "rect": [
+              16,
+              10,
+              32,
+              44
+            ],
+            "kind": "box",
+            "v": 8,
+            "d": 2
+          },
+          {
+            "name": "arch",
+            "rect": [
+              13,
+              0,
+              38,
+              54
+            ],
+            "kind": "disc",
+            "v": 6,
+            "t": 10,
+            "rim": "G"
+          },
+          {
+            "name": "keystone",
+            "rect": [
+              25,
+              2,
+              14,
+              12
+            ],
+            "kind": "disc",
+            "v": 6,
+            "t": 12,
+            "rim": "G"
+          },
+          {
+            "name": "emblem",
+            "rect": [
+              27,
+              3,
+              10,
+              10
+            ],
+            "kind": "disc",
+            "v": 6,
+            "t": 14,
+            "rim": "B",
+            "round": true
+          }
+        ]
+      },
+      "BOOKS": {
+        "details": [
+          {
+            "name": "book 1",
+            "rect": [
+              2,
+              0,
+              14,
+              5
+            ],
+            "kind": "box",
+            "v": 2,
+            "d": 10
+          },
+          {
+            "name": "book 2",
+            "rect": [
+              0,
+              4,
+              18,
+              5
+            ],
+            "kind": "box",
+            "v": 1,
+            "d": 12
+          },
+          {
+            "name": "book 3",
+            "rect": [
+              2,
+              8,
+              16,
+              4
+            ],
+            "kind": "box",
+            "v": 1,
+            "d": 11
+          },
+          {
+            "name": "book 4",
+            "rect": [
+              0,
+              12,
+              20,
+              6
+            ],
+            "kind": "box",
+            "v": 0,
+            "d": 14
+          }
+        ]
+      },
+      "PAPER_STACK": {
+        "details": [
+          {
+            "name": "ream 1",
+            "rect": [
+              0,
+              0,
+              16,
+              9
+            ],
+            "kind": "box",
+            "v": 0,
+            "d": 14
+          },
+          {
+            "name": "ream 2",
+            "rect": [
+              2,
+              8,
+              14,
+              7
+            ],
+            "kind": "box",
+            "v": 1,
+            "d": 12
+          },
+          {
+            "name": "ream 3",
+            "rect": [
+              0,
+              14,
+              16,
+              10
+            ],
+            "kind": "box",
+            "v": 0,
+            "d": 14
+          }
+        ]
+      },
+      "SCROLL_PILE": {
+        "details": [
+          {
+            "name": "layer 1",
+            "rect": [
+              8,
+              0,
+              19,
+              3
+            ],
+            "kind": "box",
+            "v": 3,
+            "d": 4
+          },
+          {
+            "name": "layer 2",
+            "rect": [
+              6,
+              3,
+              21,
+              4
+            ],
+            "kind": "box",
+            "v": 2,
+            "d": 6
+          },
+          {
+            "name": "layer 3",
+            "rect": [
+              2,
+              7,
+              31,
+              4
+            ],
+            "kind": "box",
+            "v": 1,
+            "d": 8
+          },
+          {
+            "name": "layer 4",
+            "rect": [
+              1,
+              10,
+              34,
+              4
+            ],
+            "kind": "box",
+            "v": 0,
+            "d": 10
+          }
+        ]
+      },
+      "LOOSE_A": {
+        "details": [
+          {
+            "name": "sheet",
+            "rect": [
+              0,
+              0,
+              10,
+              8
+            ],
+            "kind": "top",
+            "v": 0,
+            "z": 0
+          }
+        ]
+      },
+      "LOOSE_B": {
+        "details": [
+          {
+            "name": "sheet",
+            "rect": [
+              0,
+              0,
+              8,
+              10
+            ],
+            "kind": "top",
+            "v": 0,
+            "z": 0
+          }
+        ]
+      }
+    }
+  }
+}
