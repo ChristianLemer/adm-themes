@@ -19,8 +19,9 @@ theme folders (`pelion/`, `pelion-terra/`, `breakingbad/`), so everything else h
 
 A generator does not run here. It needs Administratum's tools (`tools/sheet_writer.mjs`, the sprite viewer, the
 tests), so it runs **from the root of an Administratum checkout where the world is registered** (its art under
-`ui/art/<world>/`). For Pelion that is the owner's private `pelion` branch; `meta/README.md` says where it is checked
-out. That branch is never pushed to Administratum upstream.
+`ui/art/<world>/`). That is the owner's private `theme-workshop` branch: Administratum with the pack's worlds
+registered, to draw and check them, rebased onto the app's branch in progress; `meta/README.md` says where it is
+checked out. It is never pushed to Administratum upstream, and never used to build the installed app.
 
 The loop, for one family:
 
