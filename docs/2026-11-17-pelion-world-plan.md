@@ -43,18 +43,18 @@
 
 **Interfaces:** Produces the theme `pelion` with `"art": []`, which later tasks append to; the palette slots later tasks draw in.
 
-- [ ] **Step 1:** update the three test lists (add `pelion` last; sorted where the list is sorted); run the tests: they fail.
-- [ ] **Step 2: write `theme.json`.** Read `ui/theme.js` (`BASE`: what each palette slot is; `TEXT`: every wording key; `TIER_II.rank`) and two full worlds as data (`ui/art/tower/theme.json`, `ui/art/vault/theme.json`) first.
+- [x] **Step 1:** update the three test lists (add `pelion` last; sorted where the list is sorted); run the tests: they fail.
+- [x] **Step 2: write `theme.json`.** Read `ui/theme.js` (`BASE`: what each palette slot is; `TEXT`: every wording key; `TIER_II.rank`) and two full worlds as data (`ui/art/tower/theme.json`, `ui/art/vault/theme.json`) first.
   - `px`: the spec's palette. Starting values, to tune: outline `k` `#2a2420`; marble wall plates `#d9d2c0` / `#d2cab6`, seams `#a89f8c`; floor pebbles `#c9b79a`, gaps `#8f7f68`, lit `#e2d6bd`; bronze `g` `#b07a3a`, shadow `G` `#6e4a22`, lit `h` `#e0a85a`, and the iron slots (`m`, `M`, `l`) a darker bronze with a green patina shadow; wood (`w`, `W`, `L`) olive wood `#7a5a38` / `#4e3824` / `#9a7648`; papyrus `p` / `P` `#e6d8b4` / `#b8a67e`; cloth (`r`, `R`, `d`) undyed linen `#d8cdb0` / `#efe6cc` / `#a89c80`; red `x` a brick red `#a8432e`; blue `u` Aegean `#2f6a8f`; green `v` olive `#6f7f3a`; the screen slots amber on dark bronze (`c` `#ffb84a`, `C` `#3a2a14`).
   - `rank`: high — himation deep blue `#2a4a7a` with lit and shadow, border and wreath gold `#d9a84e`; standard — nothing changed; novice — grey cloth `#9a968c` with lit and shadow. The helpers' (`adept`) tunic and satchel by the same rule.
   - `ink`, `light`: lamplight amber for the night, the window slots for sea and sky by day and stars by night; the texture inks (`scratch`, `grime`, `cant`) faint or off on marble.
   - `ui`: a dark chrome in the stone's blue-grey with bronze and Aegean accents; `--display` VT323.
   - `text`: the names of the Global Constraints, and every other key that speaks 40k reworded in the same vocabulary (status lines, the petition lines, the events, the toasts except `toast.failed`, the Settings categories, `watch.button` naming Argos). Keep `{placeholders}` and the `[one, other]` pairs exactly.
   - `notes`: what the world is, one line per part.
-- [ ] **Step 3:** tests pass, including the contrast test with no new known exception; the proof `node tools/themes_to_packs.mjs --from 090de41 --check` still ends `13 themes identical`.
-- [ ] **Step 4:** `node tools/sprite_sheet.mjs --theme pelion`; look at a dozen gallery sprites: the 40k art in Pelion's colours should already read as marble, bronze and linen. Tune the palette once.
-- [ ] **Step 5:** report every `text` key set, as a table (key, 40k, Pelion), for Christian.
-- [ ] Commit `Pelion: the theme, its palette and its words`.
+- [x] **Step 3:** tests pass, including the contrast test with no new known exception; the proof `node tools/themes_to_packs.mjs --from 090de41 --check` still ends `13 themes identical`.
+- [x] **Step 4:** `node tools/sprite_sheet.mjs --theme pelion`; look at a dozen gallery sprites: the 40k art in Pelion's colours should already read as marble, bronze and linen. Tune the palette once.
+- [x] **Step 5:** report every `text` key set, as a table (key, 40k, Pelion), for Christian.
+- [x] Commit `Pelion: the theme, its palette and its words`.
 
 ## Milestone 2: the look (stop for Christian after Task 4)
 
@@ -62,49 +62,49 @@ Each task: the recipe per family, registered in `art`, tests pass, the gallery l
 
 ### Task 2: `scribe`, `adept`
 The student: bare-headed with the wreath, short beard or none, chiton to the knee, the himation draped over the left shoulder with its border (rank slot) and its band in `y` across the chest and the back, sandals; `down`, `up`, `right` with their three walk frames; the `arm` frame a bare forearm with a stylus. The helper: smaller, a short tunic, a satchel across the body with the kind glyph front and back, carrying a scroll. Viewer: `SCRIBE.high/standard/novice` show blue-and-gold, linen, grey; the band reads in every direction.
-- [ ] Drawn, registered, tests pass, looked at; commit `Pelion: the students and the helpers`.
+- [x] Drawn, registered, tests pass, looked at; commit `Pelion: the students and the helpers`.
 
 ### Task 3: `room-floor`, `room-walls`, `room-doors`, `room-pipes`
 Floor: pebble mosaic, every floor frame (plain, vents, bolts as mosaic motifs, the sills), the channels a meander border, the sanctum's floor a rosette mosaic. Walls: dressed marble courses under a painted frieze (blue triglyphs, a red band), column drums for the pilasters, the wall feet a stone plinth; the beacon a bronze torch (off, on, its cage a bracket). Doors: bronze, studded, the sanctum's a taller pair, closed, half, open. Pipes: an olive garland on bronze hooks.
-- [ ] Drawn, registered, tests pass, looked at; commit `Pelion: the stoa, floor, walls, doors and garlands`.
+- [x] Drawn, registered, tests pass, looked at; commit `Pelion: the stoa, floor, walls, doors and garlands`.
 
 ### Task 4: `workstations`, `walls`
 `DESK`: a marble table with a wax tablet, a stylus, a pebble abacus and a clay lamp (the lamp and the tablet where the default has its screen and lamp anchors); `LECTERN`: a narrow reading stand with an open scroll; `CONSOLE`: the helper's small table; the sixteen `SHELL_COG` frames: a bronze astrolabe ring turning. `walls`: `WINDOW` and `WINDOW_TALL` the space between two columns with sea and sky (stars in a slot that is sky by day and bright by night, set in `ink.windowDay` / `ink.windowNight`); `SHELF` a rack of scroll pigeonholes; `BANNER`, `HANGING` woven hangings with a meander and a wave band; `GAUGE` a small sundial; `CENSER` a hanging oil lamp.
-- [ ] Drawn, registered, tests pass, looked at; commit `Pelion: tables, the turning ring, windows on the sea and the hangings`.
-- [ ] **Checkpoint.** Serve ADM and look at `tools/preview.html?theme=pelion&n=12` in Flat, in full light and in candles mode (screenshots), and at the viewer's Pelion column.
-- [ ] **First delivery.** Copy `ui/art/pelion/` to `PACK/pelion/`; `node tools/theme_pack.mjs check PACK` says `pelion` ok; commit and push PACK. **Stop: Christian clicks Update in Settings > Hall > Added themes, restarts, picks Pelion, and looks.** Continue only on his go; fold his changes into Tasks 1 to 4 first.
+- [x] Drawn, registered, tests pass, looked at; commit `Pelion: tables, the turning ring, windows on the sea and the hangings`.
+- [x] **Checkpoint.** Serve ADM and look at `tools/preview.html?theme=pelion&n=12` in Flat, in full light and in candles mode (screenshots), and at the viewer's Pelion column.
+- [x] **First delivery.** Copy `ui/art/pelion/` to `PACK/pelion/`; `node tools/theme_pack.mjs check PACK` says `pelion` ok; commit and push PACK. **Stop: Christian clicks Update in Settings > Hall > Added themes, restarts, picks Pelion, and looks.** Continue only on his go; fold his changes into Tasks 1 to 4 first.
 
 ## Milestone 3: Chiron and his place
 
 ### Task 5: `magos`, `sanctum`
 Drawn together, since the app draws the body over `THRONE`. Chiron: the horse body at rest on folded legs, in three-quarter view, the human torso upright, bearded, wreathed, a bronze pendant where the app pulses the chest light, his eyes where it glints them (anchors moved to fit); `arm` his arm with the staff; `claw` his hand tapping the scroll. `THRONE`: the rock ledge and fleece under him. `LORD_DESK`: a stone table with a lyre, a mortar of herbs and scrolls. `COG_MECH`: a bronze medallion, the centaur in profile. `SEAL`: a clay seal on a cord. If the pose does not read at 1x in 48x48, try the alternatives the spec allows and report them with images before settling.
-- [ ] Drawn, registered, tests pass, looked at; commit `Pelion: Chiron at rest, his ledge and his table`.
+- [x] Drawn, registered, tests pass, looked at; commit `Pelion: Chiron at rest, his ledge and his table`.
 
 ### Task 6: `cogitator`, `skull`, `gate`, `fire`
 The Antikythera mechanism, 164x100: bronze front plate, the gear train through an open side, and three dial faces under the app's animated rectangles (`screen`, `wave`, `bars` anchors: keep them over the great dial, the small dial and the calendar scale; `lamps`, `drums`, `vents` over fitting details). The owl. The propylon: two columns, a pediment, bronze doors (`GATE_L`, `GATE_R`), the mountain path at dusk in `GATE_VOID`. A bronze tripod brazier and a cluster of clay lamps, with their flame frames.
-- [ ] Drawn, registered, tests pass, looked at; commit `Pelion: the mechanism, the owl, the propylon and the fires`.
+- [x] Drawn, registered, tests pass, looked at; commit `Pelion: the mechanism, the owl, the propylon and the fires`.
 
 ## Milestone 4: the small things
 
 ### Task 7: `clutter`, `petitions`, `commits`, `refectorium`
 Scroll baskets, stacked tablets, amphorae, a crate of ostraka, loose papyrus. `SCROLL` a potsherd with writing, `QSCROLL` the potsherd with a large question mark, `SCROLL_HELD` a wax tablet held out. A laurel sprig, a clay seal, a bronze stamp. The symposion: `RECAFF` a krater on its stand, `TABLE` a long low table, `BENCH` couches, `DOZE_Z`.
-- [ ] Drawn, registered, tests pass, looked at; commit `Pelion: scrolls, potsherds, laurels and the symposion`.
+- [x] Drawn, registered, tests pass, looked at; commit `Pelion: scrolls, potsherds, laurels and the symposion`.
 
 ## Milestone 5: the generated families
 
 ### Task 8: `breakout`, `enclave`, `honours`, `lift`, `watch`, `suzerain`
 These six are drawn by Administratum's generators, one module per world: `tools/breakout_art/pelion.mjs` (the palaistra: sand floor, a low stone kerb, a herm at the gate), `tools/enclave_art/pelion.mjs` (a small walled garden court), `tools/honours_art/pelion.mjs` (a marble stele with laurel wreaths and cut letters; the text anchors of the kit kept), `tools/lift_art/pelion.mjs` (the mēchanē: a timber frame, a rope, a basket car, its lamp a small torch), `tools/watch_art/pelion.mjs` (the hoplite: crested helmet, a round shield on his back, a lantern; the `ring` frame), `tools/suzerain_art/pelion.mjs` (a low stone exedra and a painted cord). Read each generator and one existing world module of each first. The art gate reruns every module: it must pass. The modules are copied to `PACK/generators/pelion/` as well.
-- [ ] Drawn, registered, tests pass, art gate passes, looked at; commit `Pelion: the palaistra, the court, the stele, the mechane, Argos and the exedra`.
+- [x] Drawn, registered, tests pass, art gate passes, looked at; commit `Pelion: the palaistra, the court, the stele, the mechane, Argos and the exedra`.
 
 ## Milestone 6: 2.5D
 
 ### Task 9: `scribe39`, `adept39`, `magos39`, `skull39`, `watch39`, `faces`
 The four directions of the 2.5D characters (`E`, `W`, `S`, `N` with their walk frames; the students' `arm`, `armL` and `scroll`), Chiron and the owl in 2.5D, the hoplite. Then `faces.json` / `faces.png`: the volumes of the furniture drawn in Tasks 4 to 8, edited by hand as the other worlds' are (read `ui/faces.js` head comment and `ui/art/tower/faces.json`); `ui/faces.test.mjs` and `ui/artcheck.test.mjs` pass.
-- [ ] Drawn, registered, tests pass; preview `tools/preview.html?theme=pelion&n=12&view=39` looked at; commit `Pelion: the 2.5D characters and volumes`.
+- [x] Drawn, registered, tests pass; preview `tools/preview.html?theme=pelion&n=12&view=39` looked at; commit `Pelion: the 2.5D characters and volumes`.
 
 ## Milestone 7: delivery
 
 ### Task 10: the pack
-- [ ] The full check in ADM, the contrast test included; the gallery regenerated.
-- [ ] Copy `ui/art/pelion/` to `PACK/pelion/`, the generator scripts and modules to `PACK/generators/pelion/`; add a `pelion/` row to PACK's `README.md` and a line to `generators/README.md`; `node tools/theme_pack.mjs check PACK` reports both themes ok.
+- [x] The full check in ADM, the contrast test included; the gallery regenerated.
+- [x] Copy `ui/art/pelion/` to `PACK/pelion/`, the generator scripts and modules to `PACK/generators/pelion/`; add a `pelion/` row to PACK's `README.md` and a line to `generators/README.md`; `node tools/theme_pack.mjs check PACK` reports both themes ok.
 - [ ] Commit and push PACK. Christian updates the pack in the app and looks, Flat and 2.5D, day and night.
