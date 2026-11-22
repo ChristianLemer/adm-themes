@@ -1,7 +1,7 @@
 # Generators
 
 The scripts that drew some of the Breaking Bad sheets (the break-out room, the custom room, the Hall of Honours
-plaque, the lift, the Suzerain's dais, the Watchman), kept here as the source of that art. They are not part of the
+plaque, the lift, the Suzerain's dais, the Watchman, and since 0.11 the room computer, `roomcog_art.mjs`), kept here as the source of that art. They are not part of the
 pack: the installer keeps only the theme folders.
 
 They do not run on their own. Each was a module of an Administratum generator (`tools/<name>_art.mjs`, with the

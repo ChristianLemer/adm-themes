@@ -32,8 +32,7 @@
     "skull39",
     "honours",
     "lift",
-    "enclave"
-  ],
+    "enclave", "roomcog"],
   "px": {
     "0": "#9aa6ac",
     "1": "#c7d0d4",
@@ -388,6 +387,7 @@
     "ui: light chrome: the \"light\" foregrounds (--light, --flame) are dark here, so what sits under them is light too (labels, leather buttons); text on --blood reads the *-on-blood colours, the alarm --flame-on-wax, the honours plaque's words --honours-ink (white over its dark fields, readable at night too)",
     "ui: white lab sheets, the Br Ba green as the accent",
     "text.inRooms: the rooms plan's words",
-    "palette: k #26282b, visor #2f3a40, skin #f0c8a0, goatee #7a5230, white #fafafa, blue #3a6ea5, yellow #f2c230, steel #9aa3a8, steelDark #6b767c, wall #e9edf0, floor #c7d0d4, base #9aa6ac, green #5f9e5a, liquid #8fd3ff"
+    "palette: k #26282b, visor #2f3a40, skin #f0c8a0, goatee #7a5230, white #fafafa, blue #3a6ea5, yellow #f2c230, steel #9aa3a8, steelDark #6b767c, wall #e9edf0, floor #c7d0d4, base #9aa6ac, green #5f9e5a, liquid #8fd3ff",
+    "art roomcog (0.11): the room computer the lab's workstation, drawn flat: a steel cabinet with a dark monitor set in it, a yellow and black hazard plate on a stalk above, steel panels and drawers; lit, the cook's blue readout on the screen. The CI lamps keep the base iron posts, steel in this palette"
   ]
 }

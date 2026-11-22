@@ -3,7 +3,7 @@
   "name": "School of Chiron · Marble",
   "world": "pelion",
   "worldName": "Pelion",
-  "art": ["scribe", "scribe39", "adept", "adept39", "room-walls", "room-floor", "room-doors", "room-pipes", "workstations", "walls", "fire", "skull", "skull39", "gate", "cogitator", "magos", "magos39", "sanctum", "clutter", "petitions", "commits", "refectorium", "breakout", "enclave", "honours", "lift", "suzerain", "watch", "watch39"],
+  "art": ["scribe", "scribe39", "adept", "adept39", "room-walls", "room-floor", "room-doors", "room-pipes", "workstations", "walls", "fire", "skull", "skull39", "gate", "cogitator", "magos", "magos39", "sanctum", "clutter", "petitions", "commits", "refectorium", "breakout", "enclave", "honours", "lift", "suzerain", "watch", "watch39", "roomcog", "cimain", "cilamp"],
   "px": {
     "0": "#8c9196",
     "1": "#dde4e8",
@@ -210,8 +210,8 @@
     "--paper-err": "#8a2a16",
     "--leather": "#2a3442",
     "--leather-deep": "#161c24",
-    "--chart-new": "#c8904a",
-    "--chart-cache": "#4a8ab0",
+    "--chart-new": "#9a6424",
+    "--chart-cache": "#2f6a8f",
     "--rod-hi": "#e8b870",
     "--rod": "#b07a3a",
     "--rod-lo": "#6e4a22",
@@ -333,6 +333,7 @@
     "art watch, watch39: Argos, a hoplite on his rounds: a bronze Corinthian helmet (a rounded bowl, the dark T of its face opening: eye slits either side of the nose guard, the slot between the cheek pieces with his beard in it) under a red horsehair crest (from the front a tall narrow plume, from the side a long arc from the brow to the nape), a linen corselet with a blue band and pteruges, a short red cloak, bare arms, bronze greaves, sandals; his round bronze shield on his back with an eye painted on it (whole from behind, a lens at his back from the side, its rim behind his neck from the front); a spear in the frame-left hand (upright behind him from the side); a bronze lantern with horn panes hanging at knee height from the frame-right hand, the arm down along the body (light anchor its panes, every frame); ring: the spear set down, a bronze hand bell (the kōdōn) raised. The 39° frames: S and N the front and the back, E the profile facing right, W its mirror, each with the walk",
     "art suzerain: the mentor's exedra, a low marble platform with a shallowly curved marble bench round its north end (its back lit, the seat, the seat's front in shade, scrolled arms), paved inside with large slabs, its riser painted with a red and blue band; the link a red cord of two twisted strands; its end a red knot under a bronze cap",
     "faces (2.5D volumes): every default object listed, so none borrows the default world's wooden faces (sides and tops left undrawn take Pelion's edge colours); the student's table, the compact table, the helper's table and Chiron's table drawn as marble slabs with a veined top on their pedestals, what stands on them in relief (diptych, lamp, lyre, mortar), what lies flat laid flat; the krater, its pedestal, the jug and the hydria as cylinders",
-    "art scribe39, adept39, magos39: the 2.5D figures are the flat ones set in the four directions (S the front, N the back, E the profile, W its mirror), the helpers' glyph in profile on the satchel at the back hip; the scribes' gestures at the table from behind (N think, wonder, stretch); Chiron as the flat view draws him"
+    "art scribe39, adept39, magos39: the 2.5D figures are the flat ones set in the four directions (S the front, N the back, E the profile, W its mirror), the helpers' glyph in profile on the satchel at the back hip; the scribes' gestures at the table from behind (N think, wonder, stretch); Chiron as the flat view draws him",
+    "art roomcog, cimain, cilamp (0.11): the room computer the room's mechanism, an olive-wood cabinet under a blue pediment with a bronze rosette, a bronze-rimmed dial whose ticks glow amber round a bright hub while a shell runs; the department's main lamp a bronze lantern on a fluted marble column; each student's CI lamp a small bronze lamp-stand on a marble shaft (the lenses keep the app's signal colours)"
   ]
 }
