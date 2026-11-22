@@ -1,13 +1,13 @@
 // Pelion's floor (the room-floor family): a pebble mosaic of bluish white pebbles, 3 x 3, lit along the top and shaded
 // along the bottom, quiet so the students read on it; its two variants (in place of the vents and bolts) the same
-// pebbles with one course shifted; the channels a meander band (a Greek key, dark on white pebbles); the bays' sills a
-// marble threshold; the passage through the east wall a marble threshold; the sanctum's floor a rosette mosaic: corner
-// rosettes, a meander border, a blue field of small rosettes.
+// pebbles in a basket weave, mirrored or shifted; the channels a meander band (a Greek key, grey on white, quiet); the
+// bays' sills a marble threshold; the passage through the east wall a marble threshold; the sanctum's floor a rosette
+// mosaic: corner rosettes, a meander border, a blue field of small rosettes.
 // Run from the Administratum root: node <this file>. Writes ui/art/pelion/room-floor.png + .json.
 //
-// Slots: pebbles 1 (bluish white) 3 (its lit top) 8 (its shaded foot, the marble's), the gaps 2; the meander ! (dark) +
-// (white pebbles); marble 4 7 9 6 (the wall's); the sanctum's rosettes x (red) + ! 3 1, its field and corner squares u
-// (Aegean blue).
+// Slots: pebbles 1 (bluish white) 3 (its lit top) 8 (its shaded foot, the marble's), the gaps 2; the channels' meander
+// 2 (grey) 3 (white); marble 4 7 9 6 (the wall's); the sanctum's rosettes x (red) + ! 3 1, its field and corner squares
+// u (Aegean blue).
 const { writeSheet } = await import(process.cwd() + '/tools/sheet_writer.mjs');
 
 // A pebble map (one letter a pebble, '.' a gap) to slots: each pebble 1, its top row lit (3), its bottom row in shade
@@ -20,24 +20,25 @@ function pebbles(map) {
     return map[(y + H - 1) % H][x] !== c ? '3' : '1';
   }).join(''));
 }
-// Pebbles of 3 x 3, in courses set over by half; the two variants (laid over about one cell in five) shift one course
-// by a pebble's width so the bond does not run on.
+// Pebbles of 3 x 3 in a basket weave: the left column of pebbles and the right one set over each other by half a
+// pebble, so no joint runs on across the floor (a running joint reads as a stripe in the 2.5D view); the two variants
+// (laid over about one cell in five) the weave mirrored and shifted down by a row.
 const FLOOR = [
+  'AAA.DDD.',
+  'AAA.....',
   'AAA.BBB.',
-  'AAA.BBB.',
-  'AAA.BBB.',
-  '........',
-  'D.EEE.DD',
-  'D.EEE.DD',
-  'D.EEE.DD',
-  '........',
+  '....BBB.',
+  'CCC.BBB.',
+  'CCC.....',
+  'CCC.DDD.',
+  '....DDD.',
 ];
 const frames = {};
 frames.floor = pebbles(FLOOR);
-frames['floor vent'] = pebbles(FLOOR.map((r, y) => y < 3 ? '.AAA.BBB' : r));
-frames['floor bolts'] = pebbles(FLOOR.map((r, y) => y > 3 && y < 7 ? 'DD.EEE.D' : r));
+frames['floor vent'] = pebbles(FLOOR.map(r => r.slice(4) + r.slice(0, 4)));
+frames['floor bolts'] = pebbles(FLOOR.map((_, y) => FLOOR[(y + 7) % 8]));
 // the meander: a line that climbs, runs along the top, drops, runs along the bottom, a tooth hanging into each turn
-const KEY = ['!!!!!+++', '!+!+!+!+', '!+!+!+!+', '!+++!!!!'];
+const KEY = ['22222333', '23232323', '23232323', '23332222']; // the key in the gaps' grey on the pebbles' lit white
 frames['channel h'] = KEY;
 frames['channel v'] = Array.from({ length: 8 }, (_, y) => KEY.map(r => r[y]).join(''));
 // the passage through the east wall: marble threshold slabs
