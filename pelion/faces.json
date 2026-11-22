@@ -63,6 +63,22 @@
         "w": 11,
         "h": 16
       }
+    },
+    "ROOMCOG top": {
+      "frame": {
+        "x": 263,
+        "y": 0,
+        "w": 32,
+        "h": 5
+      }
+    },
+    "ROOMCOG cabinet top": {
+      "frame": {
+        "x": 296,
+        "y": 0,
+        "w": 28,
+        "h": 5
+      }
     }
   },
   "meta": {
@@ -70,7 +86,7 @@
     "image": "faces.png",
     "format": "RGBA8888",
     "size": {
-      "w": 262,
+      "w": 324,
       "h": 16
     },
     "palette": "key.gpl",
@@ -1676,27 +1692,39 @@
       "ROOMCOG": {
         "front": [
           0,
-          6,
+          20,
           32,
-          18
+          4
         ],
-        "d": 10,
-        "recess": [
-          {
-            "name": "screen",
-            "rect": [
-              10,
-              8,
-              12,
-              8
-            ],
-            "depth": 2,
-            "wall": "k"
-          }
-        ],
+        "d": 12,
         "details": [
           {
-            "name": "crest",
+            "name": "cabinet",
+            "rect": [
+              2,
+              6,
+              28,
+              14
+            ],
+            "kind": "box",
+            "v": 1,
+            "d": 10,
+            "recess": [
+              {
+                "name": "dial",
+                "rect": [
+                  10,
+                  8,
+                  12,
+                  8
+                ],
+                "depth": 2,
+                "wall": "k"
+              }
+            ]
+          },
+          {
+            "name": "pediment",
             "rect": [
               0,
               0,
@@ -1704,8 +1732,8 @@
               6
             ],
             "kind": "box",
-            "v": 3,
-            "d": 4
+            "v": 2,
+            "d": 7
           }
         ]
       }

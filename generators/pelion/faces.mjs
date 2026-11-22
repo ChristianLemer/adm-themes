@@ -1,11 +1,11 @@
 // Pelion's volumes in the 2.5D view (the faces sheet, ui/faces.js): every object of the default faces, so that none
 // borrows the default world's wooden sides and tops; where no side or top frame is drawn here the 39° builder takes
-// them from the edge colours of Pelion's own front, in Pelion's colours.
-// The three tables are shaped to Pelion's drawing (workstations.mjs): the box is the marble slab's front edge down to
-// the floor (open between the pedestals, its side drawn only at the slab), a marble top (veins, a lit front arris),
-// the two pedestals boxes of their own, the back stretcher, the wax diptych standing at the back, the abacus and the
-// stylus lying flat, the clay lamp a cylinder with its flame; the flat view's slab top (drawn in perspective) is kept
-// for the flat frame only.
+// them from the edge colours of Pelion's own front, in Pelion's colours. The room's mechanism stands on its marble
+// plinth (the plinth the box, the cabinet a box on it). The three tables are shaped to Pelion's drawing
+// (workstations.mjs): the box is the marble slab's front edge down to the floor (open between the pedestals, its side
+// drawn only at the slab), a marble top (veins, a lit front arris), the two pedestals boxes of their own, the back
+// stretcher, the wax diptych standing at the back, the abacus and the stylus lying flat, the clay lamp a cylinder with
+// its flame; the flat view's slab top (drawn in perspective) is kept for the flat frame only.
 // Run from the Administratum root: node <this file>. Writes ui/art/pelion/faces.png + .json (meta.objects).
 //
 // Slots: marble X (lit) s (face) 7 (veins) 9 6 (shade), outline k.
@@ -96,6 +96,18 @@ Object.assign(objects.RECAFF, { d: 16, details: [
   { name: 'jug', rect: [0, 26, 7, 10], kind: 'cyl', v: 13 },
   { name: 'hydria', rect: [25, 25, 7, 11], kind: 'cyl', v: 13 },
 ] });
+
+// the room's mechanism, 32 x 24 (roomcog_art.mjs): the box is the marble plinth on the floor, a step wider than the
+// cabinet and with a marble top; the olive-wood cabinet a box on it, its dial set into the face; the pediment on top
+objects.ROOMCOG = {
+  front: [0, 20, 32, 4], d: 12,
+  details: [
+    { name: 'cabinet', rect: [2, 6, 28, 14], kind: 'box', v: 1, d: 10, recess: [{ name: 'dial', rect: [10, 8, 12, 8], depth: 2, wall: 'k' }] },
+    { name: 'pediment', rect: [0, 0, 32, 6], kind: 'box', v: 2, d: 7 },
+  ],
+};
+frames['ROOMCOG top'] = marbleTop(32, cols(12), [[4, 2, 3], [20, 3, 4]], 1, 30);
+frames['ROOMCOG cabinet top'] = Array.from({ length: cols(10) }, (_, j) => (j === 0 ? 'W' : j === cols(10) - 1 ? 'L' : 'w').repeat(28));
 
 const names = Object.keys(frames);
 console.log(writeSheet('pelion/faces', frames, [names], { app: 'adm-themes generators/pelion/faces.mjs' }));
